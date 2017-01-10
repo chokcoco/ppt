@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reset.css 知多少</title>
+
+		<link rel="stylesheet" href="../css/reveal.css">
+		<link rel="stylesheet" href="../css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<style>
+		::-webkit-scrollbar-track-piece{background-color:#fff;}
+		::-webkit-scrollbar{width:10px;height: 10px;}
+		::-webkit-scrollbar-thumb{background:#999;}
+		.reveal code {
+			font-family: consolas, monospace;
+
+		}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Slides are separated by newline + three dashes + newline, vertical slides identical but two dashes -->
+				<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+					<script type="text/template">
+						# reset.css 知多少
+
+						---
+
+						## 专题页下的 reset
+								* {
+									-webkit-tap-highlight-color: transparent;
+									-webkit-appearance: none;
+									outline: 0
+								}
+								html {
+									overflow-x: hidden;
+									overflow-y: auto;
+									color: #333;
+									font-size: 62.5%;
+									font-family: Microsoft Yahei, simsun, Tahoma, Helvetica, Arial, SimHei, sans-serif
+								}
+								body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote {
+									margin: 0;
+									padding: 0
+								}
+								fieldset, img {
+									border: 0
+								}
+								address, caption, cite, code, dfn, em, th, var, optgroup {
+									font-style: normal;
+									font-weight: 400
+								}
+								del, ins {
+									text-decoration: none
+								}
+								li {
+									list-style: none
+								}
+								caption, th {
+									text-align: left
+								}
+								q:before, q:after {
+									content: ''
+								}
+								abbr, acronym {
+									border: 0;
+									font-variant: normal
+								}
+								sup {
+									vertical-align: baseline
+								}
+								sub {
+									vertical-align: baseline
+								}
+								legend {
+									color: #000
+								}
+								input, button, textarea, select, optgroup, option {
+									font-family: inherit;
+									font-size: inherit;
+									font-style: inherit;
+									font-weight: inherit
+								}
+								input, button, textarea, select {
+									outline: 0;
+									*font-size: 100%
+								}
+								textarea {
+									resize: none
+								}
+								a {
+									outline: 0;
+									text-decoration: none
+								}
+								a:hover {
+									outline: 0;
+									text-decoration: none
+								}
+								.clearfix, .cf {
+									zoom: 1
+								}
+								.clearfix:after, .cf:after {
+									content: "";
+									display: block;
+									height: 0;
+									clear: both;
+									visibility: hidden
+								}
+								.hover {
+									pointer-events: none
+								}
+
+						--
+
+						{
+							outline: 0;
+						}
+
+						---
+
+						## 123
+					</script>
+				</section>
+			</div>
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.js"></script>
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../plugin/markdown/marked.js' },
+					{ src: '../plugin/markdown/markdown.js' },
+					{ src: '../plugin/notes/notes.js', async: true },
+					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
