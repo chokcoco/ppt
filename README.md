@@ -1,6 +1,6 @@
 # ppt
 
-some presentation created by [reveal](https://github.com/hakimel/reveal.js/)
+Some presentation created by [reveal](https://github.com/hakimel/reveal.js/).
 
 ## ppt display
 
