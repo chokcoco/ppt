@@ -4,7 +4,7 @@ some presentation created by reveal
 
 ## ppt display
 
-[`css reset` && `font-family`]()
++ [`css reset` && `font-family`]()
 
 ## License
 
