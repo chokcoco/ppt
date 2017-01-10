@@ -26,7 +26,6 @@
 		::-webkit-scrollbar-thumb{background:#999;}
 		.reveal code {
 			font-family: consolas, monospace;
-
 		}
 		</style>
 	</head>
@@ -36,103 +35,298 @@
 				<!-- Slides are separated by newline + three dashes + newline, vertical slides identical but two dashes -->
 				<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
 					<script type="text/template">
-						# reset.css 知多少
+# reset.css 知多少
 
-						---
+---
 
-						## 专题页下的 reset
-								* {
-									-webkit-tap-highlight-color: transparent;
-									-webkit-appearance: none;
-									outline: 0
-								}
-								html {
-									overflow-x: hidden;
-									overflow-y: auto;
-									color: #333;
-									font-size: 62.5%;
-									font-family: Microsoft Yahei, simsun, Tahoma, Helvetica, Arial, SimHei, sans-serif
-								}
-								body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote {
-									margin: 0;
-									padding: 0
-								}
-								fieldset, img {
-									border: 0
-								}
-								address, caption, cite, code, dfn, em, th, var, optgroup {
-									font-style: normal;
-									font-weight: 400
-								}
-								del, ins {
-									text-decoration: none
-								}
-								li {
-									list-style: none
-								}
-								caption, th {
-									text-align: left
-								}
-								q:before, q:after {
-									content: ''
-								}
-								abbr, acronym {
-									border: 0;
-									font-variant: normal
-								}
-								sup {
-									vertical-align: baseline
-								}
-								sub {
-									vertical-align: baseline
-								}
-								legend {
-									color: #000
-								}
-								input, button, textarea, select, optgroup, option {
-									font-family: inherit;
-									font-size: inherit;
-									font-style: inherit;
-									font-weight: inherit
-								}
-								input, button, textarea, select {
-									outline: 0;
-									*font-size: 100%
-								}
-								textarea {
-									resize: none
-								}
-								a {
-									outline: 0;
-									text-decoration: none
-								}
-								a:hover {
-									outline: 0;
-									text-decoration: none
-								}
-								.clearfix, .cf {
-									zoom: 1
-								}
-								.clearfix:after, .cf:after {
-									content: "";
-									display: block;
-									height: 0;
-									clear: both;
-									visibility: hidden
-								}
-								.hover {
-									pointer-events: none
-								}
+## 专题页下的 reset
+```CSS
+* {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-appearance: none;
+	outline: 0
+}
+html {
+	overflow-x: hidden;
+	overflow-y: auto;
+	color: #333;
+	font-size: 62.5%;
+	font-family: Microsoft Yahei, simsun, Tahoma, Helvetica, Arial, SimHei, sans-serif
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote {
+	margin: 0;
+	padding: 0
+}
+fieldset, img {
+	border: 0
+}
+address, caption, cite, code, dfn, em, th, var, optgroup {
+	font-style: normal;
+	font-weight: 400
+}
+del, ins {
+	text-decoration: none
+}
+li {
+	list-style: none
+}
+caption, th {
+	text-align: left
+}
+q:before, q:after {
+	content: ''
+}
+abbr, acronym {
+	border: 0;
+	font-variant: normal
+}
+sup {
+	vertical-align: baseline
+}
+sub {
+	vertical-align: baseline
+}
+legend {
+	color: #000
+}
+input, button, textarea, select, optgroup, option {
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit
+}
+input, button, textarea, select {
+	outline: 0;
+	*font-size: 100%
+}
+textarea {
+	resize: none
+}
+a {
+	outline: 0;
+	text-decoration: none
+}
+a:hover {
+	outline: 0;
+	text-decoration: none
+}
+.clearfix, .cf {
+	zoom: 1
+}
+.clearfix:after, .cf:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden
+}
+.hover {
+	pointer-events: none
+}
+```
 
-						--
+--
 
-						{
-							outline: 0;
-						}
+#### 会设置默认 outline 的只有 a, input, button, textarea, select 的某些状态
+```CSS
+* {
+	outline: 0;
+}
+```
 
-						---
+--
 
-						## 123
+
+#### 使用频率
+```CSS
+fieldset, legend, blockquote, 
+cite, dfn, optgroup, 
+del, ins, abbr, acronym {
+
+}
+```
+
+
+--
+
+
+```CSS
+body, div, dl, dt, dd, ul, ol, li, 
+h1, h2, h3, h4, h5, h6, 
+pre, code, 
+form, fieldset, legend, input, button, textarea, 
+p, blockquote{
+    margin: 0;
+    padding: 0
+}
+
+```
+诸如 div 、dt、li 、th、td 等标签是没有默认 padding 和 margin 的；
+
+
+
+
+--
+
+#### 正确的写法
+```CSS
+body, dl, dd, h1, h2, h3, h4, h5, h6, p, form{
+    margin:0;
+}   
+
+ol, ul{
+    margin:0; 
+    padding:0;
+}
+```
+
+
+--
+
+#### 生效的字体有几个？
+
+```CSS
+html {
+    font-family: Microsoft Yahei, simsun, Tahoma, Helvetica, Arial, SimHei, sans-serif;
+}
+```
+
+
+--
+
+
+#### 淘宝的 `font-family`
+```CSS
+body {
+    font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+}
+```
+
+#### 我们设置的
+```CSS
+html {
+    font-family: Microsoft Yahei, simsun, Tahoma, Helvetica, Arial, SimHei, sans-serif;
+}
+```
+
+
+---
+
+## 我们为什么需要 reset ？
+
+为了消除不同的浏览器在默认样式上不同表现，但是到今天，现代浏览器在这方面的差异已经小了很多
+
+
+---
+
+
+## 存在的问题
+
++ CSS 文件大小、标签冗余
++ 全局变量滥用
++ 渲染问题
++ 样式重置
+
+
+---
+
+## [Normalize.css](https://necolas.github.io/normalize.css/5.0.0/normalize.css)
+
+
+---
+
+#### 没有一刀切
+
+
+--
+
+
++ 统一了一些元素在所有浏览器下的表现，保护有用的浏览器默认样式而不是完全清零它们，让它们在各个浏览器下表现一致；
+
+
+--
+
+
++ 为大部分元素提供一般化的表现；
+
+
+--
+
+
++ 修复了一些浏览器的 Bug ，并且让它们在所有浏览器下保持一致性；
+
+
+--
+
+
++ 通过一些巧妙的细节提升了 CSS 的可用性；
+
+
+--
+
+
++ 提供了详尽的文档让开发者知道，不同元素在不同浏览器下的渲染规则；
+
+
+---
+
+
+#### 永远没有银弹，拒绝拿来主义
+
+
+---
+
+
+## font-family 知多少
+
+
+---
+
+
+```CSS
+body {
+    font-family: serif, sans-serif, monospace, fantasy, cuisive;
+}
+```
+
+--
+
+
++ serif(衬线)
++ sans-serif(无衬线)
++ monospace(等宽)
++ fantasy(梦幻)
++ cuisive(草体)
+
+
+---
+
+
+#### serif && sans-serif
+衬线 && 无衬线
+
+
+---
+
+
+#### monosapce 等宽字体
+
+
+---
+
+
+#### fantasy 梦幻 && cuisive 草体
+
+
+---
+
+
+
+
+
+
+
+
 					</script>
 				</section>
 			</div>
