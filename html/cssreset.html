@@ -215,7 +215,6 @@ p, blockquote{
 
 
 
-
 --
 
 #### 正确的写法
@@ -266,6 +265,8 @@ html {
 
 消除**不同的浏览器**在默认样式上不同表现
 
+提供一种规范，一张白纸
+
 
 ---
 
@@ -294,10 +295,35 @@ html {
 + 统一了一些元素在所有浏览器下的表现，保护有用的浏览器默认样式而不是完全清零它们，让它们在各个浏览器下表现一致；
 
 
+```CSS
+/**
+ * Remove the margin in all browsers
+ */
+
+body {
+  margin: 0;
+}
+```
+
+
 --
 
 
 + 为大部分元素提供一般化的表现；
+
+```CSS
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+small {
+    font-size: 80%;
+}
+
+```
+不同浏览器下的small大小不一致，这里定为80%
+
 
 
 --
@@ -305,17 +331,41 @@ html {
 
 + 修复了一些浏览器的 Bug ，并且让它们在所有浏览器下保持一致性；
 
+```CSS
+a {
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+```
+在IE10下，在点击超链接（active）的时候，会出现一个灰色背景，去掉。在active或hover时，把默认的outline样式去掉（针对所有浏览器）。
+
+
 
 --
 
 
 + 通过一些巧妙的细节提升了 CSS 的可用性；
 
+```CSS
+article, aside, details,
+figcaption, figure, footer,
+header, hgroup,
+main, menu,
+nav, section, summary {
+  display: block;
+}
+```
+
 
 --
 
 
 + 提供了详尽的文档让开发者知道，不同元素在不同浏览器下的渲染规则；
+
 
 
 ---
