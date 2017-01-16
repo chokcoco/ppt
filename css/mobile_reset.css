@@ -17,7 +17,7 @@ body {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
-body, dl, dd, h1, h2, h3, h4, h5, h6, p, form {
+body, dl, dd, h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 ol, ul {
