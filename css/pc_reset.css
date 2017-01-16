@@ -13,25 +13,25 @@
 @charset 'utf-8';
 
 body {
-	font-family: tahoma, arial, 'Hiragino Sans GB', 'Mircosoft Yahei', sans-serif;
+    font-family: tahoma, arial, 'Hiragino Sans GB', 'Mircosoft Yahei', sans-serif;
 }
 body, dl, dd, h1, h2, h3, h4, h5, h6, p {
-	margin: 0;
+    margin: 0;
 }
 ol, ul {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 li {
-	list-style: none;
+    list-style: none;
 }
 a {
-	background-color: transparent;
-	text-decoration: none;
+    background-color: transparent;
+    text-decoration: none;
 }
 a:hover, a:active, input, button, textarea {
-	outline: 0;
+    outline: 0;
 }
 img {
-	border-style: none;
+    border-style: none;
 }
