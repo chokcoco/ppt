@@ -104,13 +104,13 @@
 			letter-spacing:1px;
 		}
 		.g-wave {
+			display: none;
 			position: absolute;
 			top: 0;
 			left: 0;
 		    width: 100%;
 		    height: 100%;
 			box-sizing: border-box;
-			display: block;
 		}
 		.m-btn {
 		    position: relative;
@@ -180,7 +180,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="g-wave">
+		<div class="g-wave" id="g-wave">
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
 		<defs>
 			<linearGradient id="bg">
@@ -486,7 +486,6 @@ SVG 是可缩放矢量图形，是 W3C XML 的分枝语言之一，用于标记�
 				</section>
 			</div>
 		</div>
-
 		<script src="../lib/js/head.min.js"></script>
 		<script src="../js/reveal.js"></script>
 		<script>
@@ -502,6 +501,29 @@ SVG 是可缩放矢量图形，是 W3C XML 的分枝语言之一，用于标记�
 					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+		</script>
+		<script>
+			let wave = document.getElementById('g-wave');
+
+			window.addEventListener('keydown', function(e){
+				switch(e.keyCode) {
+					case 37:
+					case 38:
+					case 39:
+					case 40:
+						stageChange();
+				}
+			});
+
+			function stageChange() {
+				let reg = /\/3\/5/;
+
+				if(reg.test(location.href)) {
+					wave.style.display = "block";
+				} else {
+					wave.style.display = "none";
+				}
+			}
 		</script>
 	</body>
 </html>
