@@ -208,6 +208,13 @@
 		    filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.5) );
 		}
 
+		.zoomContainer {
+			transform: scale(.4);
+		}
+
+		.reveal iframe {
+			width: 1200px;
+		}
 		</style>
 	</head>
 	<body>
@@ -465,6 +472,13 @@ SVG 是可缩放矢量图形，是 W3C XML 的分枝语言之一，用于标记�
 --
 
 
+属性 `stroke-dasharray` 可控制用来描边的点划线的图案范式
+<iframe title="GNbmgM" src="http://codepen.io/Chokcoco/embed/GNbmgM/?height=265&amp;theme-id=0&amp;default-tab=html,result&amp;embed-version=2" frameborder="no" scrolling="no" width="320" height="265"></iframe>
+
+
+--
+
+
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" class="loadsvg" width="300" height="400" viewbox="-150 0 600 400">
 	<path class="g-icon-qq" d="M139.8,0c71.9-1.1,100,36.6,114.8,90.6c2.6,9.7,1.9,20.3,4,30.9c0,7.3,0,14.5,0,21.8
 	c5.7,13.6,11.5,27.2,17.2,40.8c6.8,16.2,11.7,33.2,16.7,51.1c1.1,6.1,2.2,12.1,3.2,18.2c1.5,6.9,1.9,25.7-5.1,25.7
@@ -502,13 +516,13 @@ SVG 是可缩放矢量图形，是 W3C XML 的分枝语言之一，用于标记�
 
 ---
 
-## 数据可视化
+## 数据可视化([D3.js](https://d3js.org/))
 
 
 --
 
 
-中国地图
+### [地图](http://test.tv.video.qq.com/ktweb/Public/nubula/html/index.html?type=activate#wbmp)
 
 
 
@@ -526,14 +540,20 @@ SVG 是可缩放矢量图形，是 W3C XML 的分枝语言之一，用于标记�
 --
 
 
-波浪进度图
+<svg id="fillgauge1" width="97%" height="250" onclick="gauge1.update(NewValue());"></svg>
+<svg id="fillgauge2" width="19%" height="200" onclick="gauge2.update(NewValue());"></svg>
+<svg id="fillgauge3" width="19%" height="200" onclick="gauge3.update(NewValue());"></svg>
+<svg id="fillgauge4" width="19%" height="200" onclick="gauge4.update(NewValue());"></svg>
+<svg id="fillgauge5" width="19%" height="200" onclick="gauge5.update(NewValue());"></svg>
+<svg id="fillgauge6" width="19%" height="200" onclick="gauge6.update(NewValue());"></svg>
 
 
 --
 
 
 
-折线图
+<iframe height='405' scrolling='no' title='D3JS力向导图示意' src='http://codepen.io/Chokcoco/embed/pEoJmv/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/Chokcoco/pen/pEoJmv/'>D3JS力向导图示意</a> by Chokcoco (<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 
 
@@ -560,6 +580,8 @@ SVG 与 CSS 的联系
 		<script src="../lib/js/head.min.js"></script>
 		<script src="../js/reveal.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+		<script src="../js/liquidFillGauge.js"></script>
+		<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js"></script> -->
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
@@ -579,6 +601,7 @@ SVG 与 CSS 的联系
 
 			let wave = document.getElementById('g-wave');
 			let isOnlyOnePie = 0;
+			let isOnlyOneLiquid= 0;
 
 			window.addEventListener('keydown', function(e){
 				switch(e.keyCode) {
@@ -593,6 +616,7 @@ SVG 与 CSS 的联系
 			function stageChange() {
 				let reg = /\/3\/5/;
 				let pieReg = /\/5\/2/;
+				let liquidReg = /\/5\/3/;
 
 				if(reg.test(location.href)) {
 					wave.style.display = "block";
@@ -603,6 +627,11 @@ SVG 与 CSS 的联系
 				if(pieReg.test(location.href) && !isOnlyOnePie) {
 					isOnlyOnePie = !isOnlyOnePie;
 					pieChart();
+				}
+
+				if(liquidReg.test(location.href) && !isOnlyOneLiquid) {
+					isOnlyOneLiquid = !isOnlyOneLiquid;
+					liquidChart()();
 				}
 			}
 
@@ -739,6 +768,153 @@ SVG 与 CSS 的联系
 
 				setTimeout(restOfTheData, 1000);
 			}
+
+			/**
+			 * 绘制中国地图
+			 */
+			function drwaChinaMap() {
+				let width = 1920;
+				let height = 950;
+
+				// 选择容器及分组
+				let svg = d3.select(".zoomContainer").append("svg")
+					.attr("width", width)
+					.attr("height", height)
+					.attr("class", "g-map")
+					.append("g");
+
+				// 使用 geoMercator 投影函数来转换经度纬度
+				let projection = d3.geoMercator()
+					// 设置地图的中心，[107,35] 指的是经度和纬度
+					.center([107, 38])
+					// 设定放大缩小的比例
+					.scale(1000)
+					// 设定平移
+					.translate([width / 2, height / 2]);
+
+				// 地理路径生成器，根据地图的地理数据生成 SVG 中 path 元素的路径值
+				let path = d3.geoPath().projection(projection);
+
+				// 请求数据
+				request("//test.tv.video.qq.com/ktweb/Public/nubula/json/china.json").then(root => {
+
+					if (root.isFail) {
+						return;
+					}
+
+					svg.selectAll("path")
+						.data(root.features)
+						.enter()
+						.append("path")
+						.attr("stroke", "#fff")
+						.attr("stroke-width", 1)
+						.attr("fill", function (d, i) {
+							return "transparent";
+						})
+						.attr("d", path)
+						.attr("cursor", "pointer")
+						.on("mouseover", function (d, i) {
+							d3.select(this)
+								.attr("fill", "rgba(255, 255, 255, .2)");
+						})
+						.on("mouseout", function (d, i) {
+							d3.select(this)
+								.attr("fill", "transparent");
+						});
+				});
+			}
+
+			function request(url) {
+				return new Promise((resolve, reject) => {
+					d3.json(url, (error, root) => {
+						if (error) {
+							console.log('error', error);
+							reject({
+								isFail: true
+							});
+						} else {
+							resolve(root);
+						}
+					});
+				});
+			}
+
+			function liquidChart(){
+				var gauge1 = loadLiquidFillGauge("fillgauge1", 55);
+				var config1 = liquidFillGaugeDefaultSettings();
+				config1.circleColor = "#FF7777";
+				config1.textColor = "#FF4444";
+				config1.waveTextColor = "#FFAAAA";
+				config1.waveColor = "#FFDDDD";
+				config1.circleThickness = 0.2;
+				config1.textVertPosition = 0.2;
+				config1.waveAnimateTime = 1000;
+				var gauge2= loadLiquidFillGauge("fillgauge2", 28, config1);
+				var config2 = liquidFillGaugeDefaultSettings();
+				config2.circleColor = "#D4AB6A";
+				config2.textColor = "#553300";
+				config2.waveTextColor = "#805615";
+				config2.waveColor = "#AA7D39";
+				config2.circleThickness = 0.1;
+				config2.circleFillGap = 0.2;
+				config2.textVertPosition = 0.8;
+				config2.waveAnimateTime = 2000;
+				config2.waveHeight = 0.3;
+				config2.waveCount = 1;
+				var gauge3 = loadLiquidFillGauge("fillgauge3", 60.1, config2);
+				var config3 = liquidFillGaugeDefaultSettings();
+				config3.textVertPosition = 0.8;
+				config3.waveAnimateTime = 5000;
+				config3.waveHeight = 0.15;
+				config3.waveAnimate = false;
+				config3.waveOffset = 0.25;
+				config3.valueCountUp = false;
+				config3.displayPercent = false;
+				var gauge4 = loadLiquidFillGauge("fillgauge4", 50, config3);
+				var config4 = liquidFillGaugeDefaultSettings();
+				config4.circleThickness = 0.15;
+				config4.circleColor = "#808015";
+				config4.textColor = "#555500";
+				config4.waveTextColor = "#FFFFAA";
+				config4.waveColor = "#AAAA39";
+				config4.textVertPosition = 0.8;
+				config4.waveAnimateTime = 1000;
+				config4.waveHeight = 0.05;
+				config4.waveAnimate = true;
+				config4.waveRise = false;
+				config4.waveHeightScaling = false;
+				config4.waveOffset = 0.25;
+				config4.textSize = 0.75;
+				config4.waveCount = 3;
+				var gauge5 = loadLiquidFillGauge("fillgauge5", 60.44, config4);
+				var config5 = liquidFillGaugeDefaultSettings();
+				config5.circleThickness = 0.4;
+				config5.circleColor = "#6DA398";
+				config5.textColor = "#0E5144";
+				config5.waveTextColor = "#6DA398";
+				config5.waveColor = "#246D5F";
+				config5.textVertPosition = 0.52;
+				config5.waveAnimateTime = 5000;
+				config5.waveHeight = 0;
+				config5.waveAnimate = false;
+				config5.waveCount = 2;
+				config5.waveOffset = 0.25;
+				config5.textSize = 1.2;
+				config5.minValue = 30;
+				config5.maxValue = 150
+				config5.displayPercent = false;
+				var gauge6 = loadLiquidFillGauge("fillgauge6", 120, config5);
+
+				function NewValue(){
+					if(Math.random() > .5){
+						return Math.round(Math.random()*100);
+					} else {
+						return (Math.random()*100).toFixed(1);
+					}
+				}
+			}
+
+			
 		</script>
 	</body>
 </html>
