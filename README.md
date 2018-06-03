@@ -1,5 +1,3 @@
-# ppt
-
 ppt created by [reveal](https://github.com/hakimel/reveal.js/).
 
 ## ppt display
