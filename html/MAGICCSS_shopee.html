@@ -839,6 +839,116 @@
 				background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
 			}
 		}
+		div.g-mix-diff {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			height: 50vh;
+			background: linear-gradient(45deg, #fff 50%, #000 50%);
+		}
+
+		.g-mix-diff p {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 24px;
+			color: #fff;
+			mix-blend-mode: difference;
+			
+		}
+		.g-mix-diff:hover p {
+			animation: move 10s infinite linear alternate;
+		}
+		@keyframes move {
+			0% {
+				transform: translate(-120%, -50%);
+			}
+			100% {
+				transform: translate(20%, -50%);
+			}
+		}
+		div.g-mix-tiktok {
+			position: relative;
+			width: 200px;
+			height: 400px;
+			margin: 20px auto;
+			filter: contrast(150%) brightness(110%);
+		}
+		.j {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 47px;
+			height: 218px;
+			z-index: 1;
+			background: #24f6f0;
+		}
+		.j::before {
+			content: "";
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			border: 47px solid #24f6f0;
+			border-top: 47px solid transparent;
+			border-radius: 50%;
+			top: 121px;
+			left: -147px;
+			transform: rotate(45deg);
+		}
+			
+		.j::after {
+			content: "";
+			position: absolute;
+			width: 140px;
+			height: 140px;
+			border: 40px solid #24f6f0;
+			border-right: 40px solid transparent;
+			border-top: 40px solid transparent;
+			border-left: 40px solid transparent;
+			top: -110px;
+			right: -183px;
+			border-radius: 100%;
+			transform: rotate(45deg);
+			z-index: -10;
+		}
+		
+		.j:last-child {
+			left: 10px;
+			top: 10px;
+			background: #fe2d52;
+			z-index: 100;
+			mix-blend-mode: lighten;
+			animation: moveLeft 10s infinite;
+		}
+			
+		.j:last-child::before {
+			border: 47px solid #fe2d52;
+			border-top: 47px solid transparent;
+
+		}
+		.j:last-child::after {
+			border: 40px solid #fe2d52;
+			border-right: 40px solid transparent;
+			border-top: 40px solid transparent;
+			border-left: 40px solid transparent;
+		}
+		
+		@keyframes moveLeft {
+			0% {
+				transform: translate(200px);
+			}
+			50% {
+				transform: translate(0px);
+			}
+			100% {
+				transform: translate(0px);
+			}
+		}
+
+		
 		</style>
 	</head>
 	<body>
@@ -900,7 +1010,7 @@ transform？ 、叠加三角形？
 + **shape-outside** 定义了一个可以是非矩形的形状，相邻的内联内容应围绕该形状进行排版
 + **clip-path** CSS 属性可以创建一个只有元素的部分区域可以显示的剪切区域
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="shape-outside" src="http://codepen.io/Chokcoco/embed/XQWBeX/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="400" style="width: 100%;" scrolling="no" title="shape-outside" src="http://codepen.io/Chokcoco/embed/XQWBeX/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='http://codepen.io/Chokcoco/pen/XQWBeX/'>shape-outside</a> by Chokcoco
 	(<a href='http://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='http://codepen.io'>CodePen</a>.
   </iframe>
@@ -921,14 +1031,14 @@ transform？ 、叠加三角形？
 
 --
 
-<iframe height="420" style="width: 100%;" scrolling="no" title="图文混排shape-outside" src="https://codepen.io/Chokcoco/embed/NgqZqX/?height=265&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="420" style="width: 100%;" scrolling="no" title="图文混排shape-outside" src="https://codepen.io/Chokcoco/embed/NgqZqX/?height=265&theme-id=1&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/NgqZqX/'>图文混排shape-outside</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
   </iframe>
 
 --
 
-<iframe height="420" style="width: 100%;" scrolling="no" title="shape-outside diamond" src="https://codepen.io/Chokcoco/embed/ZyWRbQ/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="420" style="width: 100%;" scrolling="no" title="shape-outside diamond" src="https://codepen.io/Chokcoco/embed/ZyWRbQ/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/ZyWRbQ/'>shape-outside diamond</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -945,7 +1055,7 @@ transform？ 、叠加三角形？
 
 ### 图文混排
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="Dynamic shape outside using ReactJS" src="http://codepen.io/netsi1964/embed/gLvyxj/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="400" style="width: 100%;" scrolling="no" title="Dynamic shape outside using ReactJS" src="http://codepen.io/netsi1964/embed/gLvyxj/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='http://codepen.io/netsi1964/pen/gLvyxj/'>Dynamic shape outside using ReactJS</a> by Sten Hougaard
 	(<a href='http://codepen.io/netsi1964'>@netsi1964</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
@@ -965,7 +1075,7 @@ transform？ 、叠加三角形？
 box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
 ```
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="outline遮罩" src="http://codepen.io/Chokcoco/embed/ZZYGLR/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="400" style="width: 100%;" scrolling="no" title="outline遮罩" src="http://codepen.io/Chokcoco/embed/ZZYGLR/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/ZZYGLR/'>outline遮罩</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -975,7 +1085,7 @@ box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
 
 并且，圆角也是没有问题的
 
-<iframe height="405" style="width: 100%;" scrolling="no" title="box-shadow镂空" src="http://codepen.io/Chokcoco/embed/MRYwVq/?height=265&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="405" style="width: 100%;" scrolling="no" title="box-shadow镂空" src="http://codepen.io/Chokcoco/embed/MRYwVq/?height=265&theme-id=1&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/MRYwVq/'>box-shadow镂空</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1009,7 +1119,7 @@ box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
 
 在 flex 格式化上下文中，设置了 margin: auto 的元素，在通过 justify-content 和 align-self 进行对齐之前，任何正处于空闲的空间都会分配到该方向的自动 margin 中去
 
-<iframe height="303" style="width: 100%;" scrolling="no" title="最便捷的垂直居中方式" src="https://codepen.io/Chokcoco/embed/preview/GarPev?height=303&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="303" style="width: 100%;" scrolling="no" title="最便捷的垂直居中方式" src="https://codepen.io/Chokcoco/embed/preview/GarPev?height=303&theme-id=1ark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/GarPev'>最便捷的垂直居中方式</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1376,25 +1486,28 @@ transform、filter、mix-blend-mode 等等
 
 ## 混合模式
 
++ mix-blend-mode
++ background-blend-mode
+
+将两个或者多个图片/图层利用混合模式叠加在一起，产生新的效果
 
 --
 
-```mix-blend-mode: difference```
+<div class="g-mix-diff">
+	<p>mix-blend-mode: difference</p>
+</div>
 
-<iframe height="405" style="width: 100%;" scrolling="no" title="混合模式实现文字的适配展现" src="http://codepen.io/Chokcoco/embed/OGPyBB/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+--
+
+
+<iframe height="405" style="width: 100%;" scrolling="no" title="混合模式实现文字的适配展现" src="http://codepen.io/Chokcoco/embed/OGPyBB/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/OGPyBB/'>混合模式实现文字的适配展现</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-
 --
 
-
-![](../images/01.png)
-
---
-
-<iframe height="320" style="width: 100%;" scrolling="no" title="mix-blend-mode:difference实现文字颜色自适应底色" src="https://codepen.io/Chokcoco/embed/EJgEzL/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="320" style="width: 100%;" scrolling="no" title="mix-blend-mode:difference实现文字颜色自适应底色" src="https://codepen.io/Chokcoco/embed/EJgEzL/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/EJgEzL/'>mix-blend-mode:difference实现文字颜色自适应底色</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1437,9 +1550,9 @@ transform、filter、mix-blend-mode 等等
 --
 
 
-使用 background-blend-mode: lighten 改变图片颜色
+使用 **background-blend-mode: lighten** 改变图片颜色
 
-<iframe height="280" style="width: 100%;" scrolling="no" title="纯色图片赋色技术尝试" src="http://codepen.io/Chokcoco/embed/rpLryX/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="280" style="width: 100%;" scrolling="no" title="纯色图片赋色技术尝试" src="http://codepen.io/Chokcoco/embed/rpLryX/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/rpLryX/'>纯色图片赋色技术尝试</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
   </iframe>
@@ -1447,13 +1560,52 @@ transform、filter、mix-blend-mode 等等
 
 --
 
+给不规则图片/ICON上色
 
-抖音 LOGO
+<iframe height="220" style="width: 100%;" scrolling="no" title="bg-blend-mode &amp;&amp; hover" src="https://codepen.io/Chokcoco/embed/KZapjq?height=220&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/Chokcoco/pen/KZapjq'>bg-blend-mode &amp;&amp; hover</a> by Chokcoco
+  (<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="使用 mix-blend-mode 实现抖音 LOGO" src="https://codepen.io/Chokcoco/embed/oQxQyw/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-	See the Pen <a href='https://codepen.io/Chokcoco/pen/oQxQyw/'>使用 mix-blend-mode 实现抖音 LOGO</a> by Chokcoco
-	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
-  </iframe>
+<iframe height="220" style="width: 100%;" scrolling="no" title="mix-blend-mode &amp;&amp; hover" src="https://codepen.io/Chokcoco/embed/opBLKx?height=220&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/Chokcoco/pen/opBLKx'>mix-blend-mode &amp;&amp; hover</a> by Chokcoco
+  (<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+--
+
+
+使用 **mix-blend-mode: lighten** 实现抖音 LOGO
+
+<div class="g-mix-tiktok">
+	<div class="j"></div>
+    <div class="j"></div>
+</div>
+
+
+--
+
+深入挖掘，制作一些有意思的效果，给网站增色
+
+
+--
+
+Loading
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="mix-blend-mode: screen" src="https://codepen.io/Chokcoco/embed/zwPyWj?height=300&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/Chokcoco/pen/zwPyWj'>mix-blend-mode: screen</a> by Chokcoco
+  (<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+
+--
+
+404
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="404故障效果" src="https://codepen.io/Chokcoco/embed/QWwXqra?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/Chokcoco/pen/QWwXqra'>404故障效果</a> by Chokcoco
+  (<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 
 ---
@@ -1464,7 +1616,7 @@ transform、filter、mix-blend-mode 等等
 
 --
 
-<iframe height="405" style="width: 100%;" scrolling="no" title="CSS3 filter (cancle filter by hover)" src="https://codepen.io/Chokcoco/embed/wrwbvG/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="405" style="width: 100%;" scrolling="no" title="CSS3 filter (cancle filter by hover)" src="https://codepen.io/Chokcoco/embed/wrwbvG/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/wrwbvG/'>CSS3 filter (cancle filter by hover)</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
   </iframe>
@@ -1481,7 +1633,7 @@ hover 增亮图片
 }
 ```
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="CSS3 filter hover IMG" src="https://codepen.io/Chokcoco/embed/RLwbyr/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="265" style="width: 100%;" scrolling="no" title="CSS3 filter hover IMG" src="https://codepen.io/Chokcoco/embed/RLwbyr/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/RLwbyr/'>CSS3 filter hover IMG</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1496,7 +1648,7 @@ hover 增亮图片
 	filter: blur(10px) brightness(80%) opacity(.8);
 }
 ```
-<iframe height="300" style="width: 100%;" scrolling="no" title="使用 filter:blur 生成彩色阴影" src="https://codepen.io/Chokcoco/embed/eGYYpo/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="300" style="width: 100%;" scrolling="no" title="使用 filter:blur 生成彩色阴影" src="https://codepen.io/Chokcoco/embed/eGYYpo/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/eGYYpo/'>使用 filter:blur 生成彩色阴影</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1519,7 +1671,7 @@ HOW?
 
 hue-rotate() 实现渐变背景
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="hue-rotate实现渐变背景" src="https://codepen.io/Chokcoco/embed/MRegJW/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="300" style="width: 100%;" scrolling="no" title="hue-rotate实现渐变背景" src="https://codepen.io/Chokcoco/embed/MRegJW/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/MRegJW/'>hue-rotate实现渐变背景</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
   </iframe>
@@ -1527,7 +1679,7 @@ hue-rotate() 实现渐变背景
 
 --
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="huerotate实现文字渐变" src="https://codepen.io/Chokcoco/embed/NmRMbd/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="300" style="width: 100%;" scrolling="no" title="huerotate实现文字渐变" src="https://codepen.io/Chokcoco/embed/NmRMbd/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/NmRMbd/'>huerotate实现文字渐变</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
   </iframe>
@@ -1553,7 +1705,7 @@ hue-rotate() 实现渐变背景
 }
 ```
 
-<iframe height="200" style="width: 100%;" scrolling="no" title="伪元素实现扩大点击区域" src="https://codepen.io/Chokcoco/embed/mgExya/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="200" style="width: 100%;" scrolling="no" title="伪元素实现扩大点击区域" src="https://codepen.io/Chokcoco/embed/mgExya/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/mgExya/'>伪元素实现扩大点击区域</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1564,7 +1716,7 @@ hue-rotate() 实现渐变背景
 
 省略点动画
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="CSS实现打点loading效果" src="https://codepen.io/Chokcoco/embed/yrJpQG/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="265" style="width: 100%;" scrolling="no" title="CSS实现打点loading效果" src="https://codepen.io/Chokcoco/embed/yrJpQG/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/yrJpQG/'>CSS实现打点loading效果</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1589,7 +1741,7 @@ hue-rotate() 实现渐变背景
 
 ```
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="下划线实现波浪" src="http://codepen.io/Chokcoco/embed/YMWavM/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="265" style="width: 100%;" scrolling="no" title="下划线实现波浪" src="http://codepen.io/Chokcoco/embed/YMWavM/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/YMWavM/'>下划线实现波浪</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1600,7 +1752,7 @@ hue-rotate() 实现渐变背景
 ### 使用径向渐变实现
 
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="波浪边框(优惠券边框)" src="https://codepen.io/Chokcoco/embed/MzwxBm/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="265" style="width: 100%;" scrolling="no" title="波浪边框(优惠券边框)" src="https://codepen.io/Chokcoco/embed/MzwxBm/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/MzwxBm/'>波浪边框(优惠券边框)</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1608,7 +1760,7 @@ hue-rotate() 实现渐变背景
 
 --
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="使用渐变实现波浪效果" src="https://codepen.io/Chokcoco/embed/VVNVJw/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="300" style="width: 100%;" scrolling="no" title="使用渐变实现波浪效果" src="https://codepen.io/Chokcoco/embed/VVNVJw/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/VVNVJw/'>使用渐变实现波浪效果</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1618,7 +1770,7 @@ hue-rotate() 实现渐变背景
 
 ### 使用径向渐变的另一种方式
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="渐变实现波浪下划线及动画" src="https://codepen.io/Chokcoco/embed/vMyBQe/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="400" style="width: 100%;" scrolling="no" title="渐变实现波浪下划线及动画" src="https://codepen.io/Chokcoco/embed/vMyBQe/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/vMyBQe/'>渐变实现波浪下划线及动画</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1645,7 +1797,7 @@ hue-rotate() 实现渐变背景
 --
 
 
-<iframe height="350" style="width: 100%;" scrolling="no" title="Pure Css Wave" src="https://codepen.io/Chokcoco/embed/awxYWZ/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="350" style="width: 100%;" scrolling="no" title="Pure Css Wave" src="https://codepen.io/Chokcoco/embed/awxYWZ/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/awxYWZ/'>Pure Css Wave</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1653,7 +1805,7 @@ hue-rotate() 实现渐变背景
 
 --
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Pure Css Wave Loading" src="https://codepen.io/Chokcoco/embed/EXJrdB/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="300" style="width: 100%;" scrolling="no" title="Pure Css Wave Loading" src="https://codepen.io/Chokcoco/embed/EXJrdB/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/EXJrdB/'>Pure Css Wave Loading</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1671,7 +1823,7 @@ hue-rotate() 实现渐变背景
 
 --
 
-<iframe height="450" style="width: 100%;" scrolling="no" title="滚动指示器示例" src="https://codepen.io/Chokcoco/embed/rbMvrQ/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="450" style="width: 100%;" scrolling="no" title="滚动指示器示例" src="https://codepen.io/Chokcoco/embed/rbMvrQ/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/rbMvrQ/'>滚动指示器示例</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1679,7 +1831,7 @@ hue-rotate() 实现渐变背景
 
 --
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="使用线性渐变实现滚动进度条" src="https://codepen.io/Chokcoco/embed/KbBXQM/?height=265&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="265" style="width: 100%;" scrolling="no" title="使用线性渐变实现滚动进度条" src="https://codepen.io/Chokcoco/embed/KbBXQM/?height=265&theme-id=1&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/KbBXQM/'>使用线性渐变实现滚动进度条</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1692,7 +1844,7 @@ hue-rotate() 实现渐变背景
 
 --
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="Pure CSS Parallax!" src="https://codepen.io/bennettfeely/embed/GEpso/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="400" style="width: 100%;" scrolling="no" title="Pure CSS Parallax!" src="https://codepen.io/bennettfeely/embed/GEpso/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/bennettfeely/pen/GEpso/'>Pure CSS Parallax!</a> by Bennett Feely
 	(<a href='https://codepen.io/bennettfeely'>@bennettfeely</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1707,14 +1859,14 @@ hue-rotate() 实现渐变背景
 
 父元素设置 transform-style: preserve-3d 和 perspective: 1px，子元素设置不同的 transform: translateZ
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="CSS 3D parallax" src="https://codepen.io/Chokcoco/embed/EpOeRm/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="400" style="width: 100%;" scrolling="no" title="CSS 3D parallax" src="https://codepen.io/Chokcoco/embed/EpOeRm/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/EpOeRm/'>CSS 3D parallax</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 --
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="CSS 视差" src="https://codepen.io/Chokcoco/embed/PBXwdX/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="400" style="width: 100%;" scrolling="no" title="CSS 视差" src="https://codepen.io/Chokcoco/embed/PBXwdX/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/PBXwdX/'>CSS 视差</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
