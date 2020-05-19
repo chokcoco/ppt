@@ -74,22 +74,49 @@
 			color: #0c8;
 		}
 
-		.polygon,
-		.polygon2 {
+		.polygon {
 			width: 500px;
 			height: 320px;
-			background: url(../images/cssmagic/bg-rect.png);
 			margin: 0 auto!important;
-			background-size: contain;
-			background-position: center;
-			background-repeat: no-repeat;
+			background: #ffcc00;
+    		shape-outside: polygon(0 0, 400px 0, 500px 300px, 100px 300px);
+			clip-path: polygon(0 0, 400px 0, 500px 300px, 100px 300px);
 		}
 		.polygon2 {
-			background: url(../images/cssmagic/bg-rect.png);
-			background-size: contain;
-			background-position: center;
-			background-repeat: no-repeat;
+			margin: 50px auto!important;
+			width: 500px;
+			height: 300px;
+			background: #ffcc00;
+			font-size: 24px;
+			line-height: 38px;
+			clip-path: polygon(0 0, 400px 0, 500px 300px, 100px 300px);
 		}
+
+		.polygon2 p {
+			color: #333;
+			padding: 10px;
+			font-size: 18px;
+		}
+
+		.polygon2 .left {
+			float: left;
+			shape-outside: polygon(0px 0px, 0px 300px, 100px 300px);
+			clip-path: polygon(0px 0px, 0px 300px, 100px 300px);
+		}
+
+		.polygon2 .right {
+			float: right;
+			shape-outside: polygon(0px 0px, 100px 0px, 100px 300px);
+			clip-path: polygon(0px 0px, 100px 0px, 100px 300px);
+
+		}
+
+		.polygon2 .left,
+		.polygon2 .right {
+			width: 100px;
+			height: 300px;
+		}
+
 		.iphonex {
 			width: 300px;
 			height: 491px;
@@ -127,13 +154,38 @@
 			background-repeat: no-repeat;
 		}
 		.bgShadow2 {
-			width: 191px;
-			height:	176px;
-			background: url(../images/cssmagic/bg-shadow2.png);
-			margin: 0 auto!important;
-			background-size: contain;
-			background-position: center;
-			background-repeat: no-repeat;
+			margin: 20px auto!important;
+			width: 80px;
+			height: 80px;
+			background: #fff;
+			box-shadow: 
+				80px 80px 0 0 yellow, 
+				-80px 80px 0 10px green;
+		}
+		.bgShadowCloud{
+			width:100px;
+			height:100px;
+			margin:50px auto!important;
+			background:#fff;
+			border-radius:50%;
+			box-shadow:
+				120px 0px 0 -10px #795548,
+				95px 20px 0 0px #607D8B,
+				30px 30px 0 -10px green,
+				90px -20px 0 0px #FFC107,
+				40px -40px 0 0px #2196F3;
+			animation: change 6s infinite;
+		}
+
+		@keyframes change {
+			100% {
+				box-shadow:
+				120px 0px 0 -10px #fff,
+				95px 20px 0 0px #fff,
+				30px 30px 0 -10px #fff,
+				90px -20px 0 0px #fff,
+				40px -40px 0 0px #fff;
+			}
 		}
 		.bgCSSbattle {
 			width: 800px;
@@ -144,6 +196,251 @@
 			background-position: center;
 			background-repeat: no-repeat;
 		}
+
+		.bgCSSbattle2 {
+			margin: 0 auto!important;
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			background: #09042A;
+			animation: change2 10s forwards;
+		}
+
+		@keyframes change2 {
+			30% {
+				box-shadow:140px 0 0 0 #E78481;
+			}
+			60% {
+				box-shadow:140px 0 0 0 #E78481, inset 140px 0 0 0 #7B3F61;
+			}
+			100% {
+				box-shadow:140px 0 0 0 #E78481, inset 140px 0 0 0 #7B3F61;
+			}
+		}
+		.bgLongShadow {
+			position: relative;
+			width: 268px;
+			height:	269px;
+			background: #fff;
+			margin: 20px auto!important;
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+		.bgLongShadow::before,
+		.bgLongShadow::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -1;
+		}
+		.bgLongShadow::before {
+			transform-origin: 0 50%;
+			transform: translate(100%, 0) skewY(45deg) scaleX(.6);
+			background: linear-gradient(90deg, rgba(255, 255, 255, .3), transparent);
+			animation: shadowMoveY 5s infinite linear alternate;
+		}
+
+		.bgLongShadow::after {
+			transform-origin: 0 0;
+			transform: translate(0%, 100%) skewX(45deg) scaleY(.6);
+			background: linear-gradient(180deg, rgba(255, 255, 255, .3), transparent);
+			animation: shadowMoveX 5s infinite linear alternate;
+		}
+		.bgColorShadow {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			margin: 20px auto!important;
+			background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505822443&di=941986df9c6514d5d43eaba4aa938347&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.qqtouxiang8.net%2Fuploads%2Fallimg%2Fc150313%2F142623130563050-922006.jpg) no-repeat center center;
+			background-size: 100% 100%;
+		}
+		.bgColorShadow::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: inherit;
+			background-size: 100% 100%;
+			border-radius: 50%;
+			filter: blur(10px) brightness(80%) opacity(.8);
+			transform: scale(.95);
+			z-index: -1;
+			animation: filterChange 15s infinite linear;
+		}
+
+		@keyframes filterChange {
+			0% {
+				top: 0;
+				left: 0;
+				filter: blur(0) brightness(100%) opacity(1);
+			}
+			25% {
+				top: 10%;
+				left: 4%;
+				filter: blur(0) brightness(100%) opacity(1);
+			}
+			50% {
+				top: 10%;
+				left: 4%;
+				filter: blur(5px) brightness(80%) opacity(.8);
+			}
+			100% {
+				top: 10%;
+				left: 4%;
+				filter: blur(5px) brightness(80%) opacity(.8);
+			}
+		}
+		.flecha {
+			position: relative;
+			margin: 50px auto!important;
+			width: 0;
+			height: 0;
+			border-top: 90px solid transparent!important;
+			border-right: 90px solid #FFC000!important;
+			transform: rotate(10deg);
+			box-shadow: 0px 0px 10px rgba(255, 220, 0, .8);
+		}
+		.flecha:after {
+			content: "";
+			position: absolute;
+			border: 0 solid transparent;
+			border-top: 30px solid #FFC000!important;
+			border-radius: 200px 0 0 0!important;
+			top: -119px;
+			left: -98px;
+			width: 120px;
+			height: 120px;
+			transform: rotate(45deg);
+			
+		}
+
+		.drop-shadow {
+			box-shadow: unset;
+			filter: drop-shadow(0px 0px 10px rgba(255, 220, 0, .8));
+		}
+
+		.tiktok {
+			position: relative;
+			width: 37px;
+			height: 218px;
+			margin: 30px auto!important;
+			z-index: 1;
+			background: #fff;
+			filter:drop-shadow(-10px -10px 0 #24f6f0) contrast(150%) brightness(110%);
+			box-shadow: 11.6px 10px 0 0 #fe2d52;
+			z-index: 10;
+			animation: move 5s infinite ease-in;
+		}
+		.tiktok::before {
+			content: "";
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			border: 37px solid #fff;
+			border-top: 37px solid transparent;
+			border-radius: 50%;
+			top: 123px;
+			left: -137px;
+			transform: rotate(45deg);
+			filter: drop-shadow(16px 0px 0 #fe2d52);
+		}
+    
+        .tiktok::after {
+			content: "";
+			position: absolute;
+			width: 140px;
+			height: 140px;
+			border: 30px solid #fff;
+			border-right: 30px solid transparent;
+			border-top: 30px solid transparent;
+			border-left: 30px solid transparent;
+			top: -100px;
+			right: -172px;
+			border-radius: 100%;
+			transform: rotate(45deg);
+			z-index: -10;
+			filter:drop-shadow(14px 0 0 #fe2d52);
+		}
+
+		@keyframes move {
+			4% {
+				transform: skewX(7deg) translate(-30px);
+			}
+			7% {
+				transform: skewX(-6deg) translate(18px);
+			}
+			9% {
+				transform: skewX(5deg) translate(-8px);
+			}
+			10% {
+				transform: skewX(-4deg)translate(6px);
+			}
+			11% {
+				transform: skewX(3deg)translate(-4px);
+			}
+			12% {
+				transform: skewX(-2deg) translate(2px);
+			}
+			13% {
+				transform: skewX(1deg) translate(0px);
+				filter:drop-shadow(-10px -10px 0 #24f6f0) contrast(120%) brightness(110%) blur(3px);
+			}
+			30% {
+				filter:drop-shadow(-10px -10px 0 #24f6f0) contrast(150%) brightness(120%) blur(0px);
+			}
+		}
+
+		.chamfer {
+			position: relative;
+			margin: 50px auto!important;
+			width: 20vw;
+			height: 8vw;
+			border-radius: 1vmin;
+			overflow: hidden;
+			line-height: 8vw;
+			color: #fff;
+			text-align: center;
+		}
+		.chamfer::before {
+			position: absolute;
+			content: "";
+			top: -2vw;
+			left: -2vw;
+			width: 4vw;
+			height: 4vw;
+			border-radius: 50%;
+			box-shadow: 0 0 0 25vw #e91e63; 
+			z-index: -1;
+			/* animation: shadowmove 10s infinite; */
+		}
+
+		.chamfer:hover::before {
+			animation: shadowmove 10s infinite;
+		}
+
+		@keyframes shadowmove {
+			0%{
+				background: #e91e63; 
+				box-shadow: 0 0 0 0 #e91e63; 
+			}
+			
+			10% {
+				background: transparent; 
+				box-shadow: 0 0 0 0 #e91e63; 
+			}
+			
+			50% {
+				background: transparent; 
+				box-shadow: 0 0 0 25vw #e91e63; 
+			}
+		}
+
 		.g-first-page {
 			position: fixed;
 			top: 50%;
@@ -208,6 +505,340 @@
 				filter: hue-rotate(360deg);
 			}
 		}
+		.g-linear-gradient {
+			margin: 50px auto!important;
+			width: 400px;
+			height: 50px;
+			background: linear-gradient(45deg, #fff, #ffcc00);
+		}
+		.g-linear-gradient-2 {
+			margin: 50px auto!important;
+			width: 400px;
+			height: 50px;
+			background: linear-gradient(45deg, #fff 50%, #ffcc00 50%);
+		}
+		.g-linear-gradient-3 {
+			margin: 50px auto!important;
+			width: 400px;
+			height: 50px;
+			background: linear-gradient(45deg, #fff 33%, transparent 33%, transparent 66%, #ffcc00 66%);
+		}
+		.g-linear-gradient-4 {
+			margin: 50px auto!important;
+			width: 400px;
+			height: 50px;
+			background: repeating-linear-gradient(45deg, #ffcc00, #ffcc00
+10px, transparent 11px, transparent 19px, #ffcc00 20px);
+		}
+		.g-linear-gradient-box {
+			margin: 50px auto!important;
+			display: flex;
+			flex-wrap: normal;
+			flex-direction: row;
+			justify-content: space-around;
+		}
+		.g-linear-gradient-5 {
+			width: 80px;
+			height: 80px;
+			border: 2px solid #fff!important;
+			position: relative;
+			/* overflow: hidden; */
+		}
+		.g-linear-gradient-5::before {
+			content: "";
+			position: absolute;
+			top: -100%;
+			left: -100%;
+			bottom: -100%;
+			right: -100%;
+			background: linear-gradient(45deg,  #ffc700 0%, #e91e1e 50%, #6f27b0 100%);
+			background-size: 100% 100%;
+			animation: bgposition 8s infinite linear alternate;
+			z-index: -1;
+		}
+		.overflow {
+			overflow: hidden;
+		}
+			
+		@keyframes bgposition {
+			0% {
+				transform: translate(30%, 30%);
+			}
+			25% {
+				transform: translate(30%, -30%);
+			}
+			50% {
+				transform: translate(-30%, -30%);
+			}
+			75% {
+				transform: translate(-30%, 30%);
+			}
+			100% {
+				transform: translate(30%, 30%);
+			}
+		}
+		.g-linear-gradient-6 {
+			position: relative;
+			width: 400px;
+			height: 30px;
+			margin: auto;
+			border-radius:20px;
+			background: #9b9dad;
+		}
+		.g-linear-gradient-6::before {
+			position: absolute;
+			content: "";
+			top: 0;
+			left: 0;
+			width: 400px;
+			height: 85px;
+			background: repeating-linear-gradient(45deg, #ffcc00, #ffcc00
+	10px, transparent 11px, transparent 19px, #ffcc00 20px);
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			animation: move 1s linear infinite;
+		}
+		@keyframes move {
+			from { background-position: 0 0; }
+			to { background-position: 0 -56px; }
+		}
+		.g-linear-gradient-7 {
+			position: relative;
+			width: 300px;
+			height: 180px;
+			margin: auto!important;
+			background:
+				linear-gradient(135deg, transparent 15px, #ffcc00 0)
+				top left,
+				linear-gradient(-135deg, transparent 15px, #ffcc00 0)
+				top right,
+				linear-gradient(-45deg, transparent 15px, #ffcc00 0)
+				bottom right,
+				linear-gradient(45deg, transparent 15px, #ffcc00 0)
+				bottom left;
+				background-size: 60% 60%;
+				background-repeat: no-repeat;
+		}
+
+		div.g-linear-gradient-8 {
+			position: relative;
+			width: 400px;
+			height: 160px;
+			margin: 50px auto!important;
+			background-image: 
+				radial-gradient(circle at 1px 8px, transparent 6px, #ffcc00 6px, #ffcc00 0px),
+				radial-gradient(circle at 199px 8px, transparent 6px, #ffcc00 6px, #ffcc00 0px);
+			background-size: 200px 18px;
+			background-position: 0 0, 201px 0;
+			background-repeat-x: no-repeat;
+			font-size: 100px;
+			color: #fff;
+			font-weight: bold;
+			line-height: 160px;
+			padding-left: 60px;
+			box-sizing: border-box;
+			cursor: pointer;
+			text-align: initial;
+		}
+		.g-linear-gradient-8::before {
+			position: absolute;
+			content: "";
+			left: 240px;
+			top: 0;
+			bottom : 0;
+			width: 0;
+			border-left: 2px dashed rgb(12, 9, 46);
+		}
+		.g-linear-gradient-8::after {
+			position: absolute;
+			content: "立即领取";
+			font-size: 30px;
+			width: 70px;
+			top: 50%;
+			right: 2%;
+			transform: translate(-50%, -50%);
+			line-height: 40px;
+			letter-spacing: 5px;
+		}
+		div.gradient-wave {
+			position: relative;
+			margin: 50px auto;
+			width: 100px;
+			height: 24px;
+			font-size: 14px;
+			text-decoration: none;
+			cursor:pointer;
+			transform: scale(3);
+		}
+		.gradient-wave::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: radial-gradient(circle at 10px -7px, transparent 8px, deeppink 8px, deeppink 9px, transparent 9px) repeat-x;
+			background-size: 20px 20px;
+			background-position: -10px calc(100% + 16px); 
+
+		}
+		.gradient-wave:hover::before {
+			animation: moveTop 2s infinite alternate linear;
+		}
+		.gradient-wave::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: radial-gradient(circle at 10px 27px, transparent 8px, #ffcc00 8px, #ffcc00 9px, transparent 9px) repeat-x;
+			background-size: 20px 20px;
+			background-position: 0 calc(100% - 4px); 
+		}
+
+		.gradient-wave:hover::after {
+			animation: moveBottom 2s infinite alternate linear;
+		}
+		
+		div.flow-wave {
+			width: 100px;
+			font-size: 18px;
+			transform: scale(3);
+			text-decoration: none;
+			margin: 20px auto;
+			background: radial-gradient(circle at 10px -7px, transparent 8px, currentColor 8px, currentColor 9px, transparent 9px) repeat-x,
+				radial-gradient(circle at 10px 27px, transparent 8px, currentColor 8px, currentColor 9px, transparent 9px) repeat-x;
+			background-size: 20px 20px;
+			background-position: -10px calc(100% + 16px), 0 calc(100% - 4px);
+		}
+
+		.flow-wave {
+			padding: 5px 0;
+		}
+		.flow-wave:hover,
+		.flow-wave:focus {
+			background: radial-gradient(circle at 10px -7px, transparent 8px, currentColor 8px, currentColor 9px, transparent 9px) repeat-x,
+				radial-gradient(circle at 10px 27px, transparent 8px, currentColor 8px, currentColor 9px, transparent 9px) repeat-x;
+			background-size: 20px 20px;
+			background-position: -10px calc(100% + 16px), 0 calc(100% - 4px);
+			animation: waveFlow 1s infinite linear;
+		}
+		@keyframes waveFlow {
+			from { background-position-x: -10px, 0; }
+			to { background-position-x: -30px, -20px; }
+		}
+
+		@keyframes moveTop {
+			100% {
+				bottom: -5px;
+			}
+		}
+
+		@keyframes moveBottom {
+			100% {
+				bottom: 5px;
+			}
+		}
+		div.g-btn-graidient {
+			width: 100px;
+			font-size: 1em;
+			padding: 15px 25px;
+			margin: 30px auto;
+			-webkit-appearance: none;
+			appearance: none;
+			background-color: #ff0081;
+			color: #fff;
+			border-radius: 4px;
+			border: none;
+			cursor: pointer;
+			position: relative;
+			transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+			box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+		}
+		.g-btn-graidient:focus {
+			outline: 0;
+		}
+
+		.g-btn-graidient:before, .g-btn-graidient:after{
+			position: absolute;
+			content: '';
+			display: block;
+			width: 140%;
+			height: 100%;
+			left: -20%;
+			z-index: -1000;
+			transition: all ease-in-out 0.5s;
+			background-repeat: no-repeat;
+		}
+
+		.g-btn-graidient:before{
+			display: none;
+			top: -75%;
+			background-image:  
+				radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle,  transparent 20%, #ff0081 20%, transparent 30%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%), 
+				radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle,  transparent 10%, #ff0081 15%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%);
+			background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+		}
+
+		.g-btn-graidient:after{
+			display: none;
+			bottom: -75%;
+			background-image:  
+				radial-gradient(circle, #ff0081 20%, transparent 20%), 
+				radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle,  transparent 10%, #ff0081 15%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%);
+			background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+		}
+
+		.g-btn-graidient:active{
+			transform: scale(0.9);
+			background-color: darken(#ff0081, 5%);
+			box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+		}
+
+		.g-btn-graidient.animate:before {	
+			display: block;
+			animation: topBubbles ease-in-out 0.75s forwards;
+		}
+		.g-btn-graidient.animate:after{
+			display: block;
+			animation: bottomBubbles ease-in-out 0.75s forwards;
+		}
+		@keyframes topBubbles {
+			0%{
+				background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+			}
+			50% {
+				background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;}
+			100% {
+				background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+				background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+			}
+		}
+
+		@keyframes bottomBubbles {
+			0%{
+				background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+			}
+			50% {
+				background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;}
+			100% {
+				background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+				background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+			}
+		}
 		</style>
 	</head>
 	<body>
@@ -225,7 +856,6 @@
 
 + 布局
 + 阴影
-+ 边框
 + 渐变
 + 混合模式
 + 滤镜
@@ -245,20 +875,30 @@
 
 如何实现下面这个平行四边形
 
-<div class="polygon"></div>
 transform？ 、叠加三角形？
+
+<div class="polygon"></div>
+
 
 --
 
 如果图形内部还有文字，需要正常排布，transform 、叠加三角形 都不可行
 
-<div class="polygon2"></div>
+<div class="polygon2">
+    <span class="left"></span>
+    <span class="right"></span>
+    <p> shape-outside 定义了一个可以是非矩形的形状，相邻的内联内容应围绕该形状进行排版。<br/>
+    shape-outside 属性指定使用下面列表的值来定义浮动元素的浮动区域。这个浮动区域决定了行内内容（浮动元素）所包裹的形状。<br/>
+    clip-path CSS 属性可以创建一个只有元素的部分区域可以显示的剪切区域。clip-path CSS 属性可以创建一个只有元素的部分区域可以显示的剪切区域。clip-path CSS 属性可以创建一个只有元素的部分区域可以显示的剪切区域。
+    </p>
+</div>
 
 
 --
 
 
-`clip-path` && `shape-outside`
++ **shape-outside** 定义了一个可以是非矩形的形状，相邻的内联内容应围绕该形状进行排版
++ **clip-path** CSS 属性可以创建一个只有元素的部分区域可以显示的剪切区域
 
 <iframe height="400" style="width: 100%;" scrolling="no" title="shape-outside" src="http://codepen.io/Chokcoco/embed/XQWBeX/?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='http://codepen.io/Chokcoco/pen/XQWBeX/'>shape-outside</a> by Chokcoco
@@ -453,10 +1093,11 @@ box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
 ```CSS
 div {
     width: 80px;
-    height: 80px;
-    border: 1px solid #333;
-    box-sizing: border-box;
-    box-shadow: 80px 80px 0 0 #000;
+	height: 80px;
+	background: #fff;
+	box-shadow: 
+		80px 80px 0 0 yellow, 
+		-80px 80px 0 10px green;
 }
 ```
 
@@ -466,10 +1107,8 @@ div {
 --
 
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="cloudy" src="https://codepen.io/Chokcoco/embed/VjjyqL?height=265&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-	See the Pen <a href='https://codepen.io/Chokcoco/pen/VjjyqL'>cloudy</a> by Chokcoco
-	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+<div class="bgShadowCloud"></div>
+
 
 --
 
@@ -477,10 +1116,9 @@ div {
 
 --
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="MWaqadZ" src="https://codepen.io/Chokcoco/embed/MWaqadZ?height=265&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-	See the Pen <a href='https://codepen.io/Chokcoco/pen/MWaqadZ'>MWaqadZ</a> by Chokcoco
-	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
-  </iframe>
+
+<div class="bgCSSbattle2"></div>
+
 
 --
 
@@ -490,13 +1128,247 @@ div {
 
 --
 
+有的时候，CSS 的 box-shadow 无法很好去实现一些特殊阴影，可以利用一些小技巧进行模拟
 
 
+--
+
+
+
+长阴影
+
++ 借助两个伪元素的 transform: skew() 变换
++ 伪元素背景从实色到透明色的背景色变化
+
+<div class="bgLongShadow"></div>
+
+
+
+--
+
+彩色阴影
+
++ 借助了高斯模糊滤镜
+
+```
+{
+	filter: blur(10px) brightness(90%) opacity(.85);
+}
+```
+
+<div class="bgColorShadow"></div>
+
+
+--
+
+
+整块的阴影，使用 box-shadow ?
+
+```
+{
+	box-shadow: 0px 0px 10px rgba(255, 220, 0, .8);
+}
+```
+
+<div class="flecha"></div>
+
+--
+
+整块的阴影，使用 drop-shadow
+
+```
+{
+	filter: drop-shadow(0px 0px 10px rgba(255, 220, 0, .8));
+}
+```
+
+<div class="flecha drop-shadow"></div>
+
+
+--
+
+利用 **drop-shadow** 单标签实现抖音 LOGO
+
+<div class="tiktok"></div>
+
+
+--
+
+```
+div {
+    position: relative;
+    width: 37px;
+    height: 218px;
+    background: #fff;
+    filter:drop-shadow(-10px -10px 0 #24f6f0) contrast(150%) brightness(110%);
+    box-shadow: 11.6px 10px 0 0 #fe2d52;
+    
+    &::before {
+        ....
+        filter: drop-shadow(16px 0px 0 #fe2d52);
+    }
+    
+    &::after {
+        ....
+        filter: drop-shadow(14px 0 0 #fe2d52);
+    }
+}
+```
+
+--
+
+使用阴影的扩散半径实现内切圆角
+
+<div class="chamfer"></div>
 
 ---
 
+## 渐变
 
-## 边框
+
+
+--
+
++ 渐变分为线性渐变、径向渐变、角向渐变（圆锥渐变）
++ 渐变可以控制各种角度
++ **渐变可以是多重渐变叠加**
++ 渐变不能进行动画 (animation/transtion)
+
+--
+
+线性渐变
+
+```
+{
+	background: linear-gradient(45deg, #fff, #ffcc00);
+}
+```
+
+<div class="g-linear-gradient"></div>
+
+--
+
+合理控制颜色百分比，可以让渐变颜色变成实色
+
+```
+{
+	background: linear-gradient(45deg, #fff 50%, #ffcc00 50%);
+}
+```
+
+<div class="g-linear-gradient-2"></div>
+
+--
+
+某一段的颜色可以是透明的
+
+```
+{
+	background: linear-gradient(45deg, 
+		#fff 33%, 
+		transparent 33%, transparent 66%, 
+		#ffcc00 66%
+	);
+}
+```
+
+<div class="g-linear-gradient-3"></div>
+
+--
+
++ 可以利用 repeating-linear-gradient、repeating-radial-gradient 进行重复
++ 也可以利用 background-size 和 background-repeat 进行重复控制
+
+```
+{
+	background: repeating-linear-gradient(45deg, #ffcc00, #ffcc00
+	10px, transparent 10px, transparent 19px, #ffcc00 20px);
+}
+```
+
+<div class="g-linear-gradient-4"></div>
+
+
+
+--
+
+
+可以不去改变颜色本身，而是利用其它元素进行动画
+
+transform、filter、mix-blend-mode 等等
+
+<div class="g-linear-gradient-box">
+	<div class="g-linear-gradient-5"></div>
+	<div class="g-linear-gradient-5 overflow"></div>
+</div>	
+
+
+--
+
+利用透明色，实现切角
+
+```CSS
+{
+	background:
+		linear-gradient(135deg, transparent 15px, #ffcc00 0)
+		top left,
+		linear-gradient(-135deg, transparent 15px, #ffcc00 0)
+		top right,
+		linear-gradient(-45deg, transparent 15px, #ffcc00 0)
+		bottom right,
+		linear-gradient(45deg, transparent 15px, #ffcc00 0)
+		bottom left;
+	background-size: 60% 60%;
+	background-repeat: no-repeat;
+}
+```
+
+<div class="g-linear-gradient-7"></div>
+
+
+
+--
+
+利用重复线性渐变 + transform 实现进度条效果
+
+<div class="g-linear-gradient-box">
+	<div class="g-linear-gradient-6"></div>
+	<div class="g-linear-gradient-6 overflow"></div>
+</div>
+
+
+--
+
+利用重复渐变，可以巧妙的实现优惠券的边纹
+
+```css
+{
+	background-image: 
+		radial-gradient(circle at 1px 8px, transparent 6px, #ffcc00 6px, #ffcc00 0px),
+		radial-gradient(circle at 199px 8px, transparent 6px, #ffcc00 6px, #ffcc00 0px);
+	background-size: 200px 18px;
+	background-position: 0 0, 200px 0;
+	background-repeat-x: no-repeat;
+}
+```
+
+<div class="g-linear-gradient-8">50</div>
+
+
+--
+
+多种渐变的组合，还能创造出各种有意思的图形
+
+<div class="gradient-wave">渐变实现波浪</div>
+<div class="flow-wave">Hover Me</div>
+
+--
+
+愿意折腾，使用渐变实现的动画也能很酷炫
+
+使用了 **background-position** + **background-size**
+
+<div class="g-btn-graidient">Click</div>
 
 
 
@@ -865,6 +1737,19 @@ hue-rotate() 实现渐变背景
 		<script src="../lib/js/head.min.js"></script>
 		<script src="../js/reveal.js"></script>
 		<script>
+			window.addEventListener('click', (e) => {
+				if (e.target.className === 'g-btn-graidient') {
+					e.preventDefault;
+					//reset animation
+					e.target.classList.remove('animate');
+					
+					e.target.classList.add('animate');
+					setTimeout(function(){
+						e.target.classList.remove('animate');
+					},700);
+				}
+			});
+
 			// More info http://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
