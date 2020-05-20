@@ -894,7 +894,7 @@
 			border: 47px solid #24f6f0;
 			border-top: 47px solid transparent;
 			border-radius: 50%;
-			top: 121px;
+			top: 120px;
 			left: -147px;
 			transform: rotate(45deg);
 		}
@@ -948,7 +948,87 @@
 			}
 		}
 
-		
+		div.g-gradient-bg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100vw;
+			height: 140vh;
+			background: linear-gradient(30deg, #ffcc00, deeppink, #9c27b0);
+			animation: hueRotate 20s infinite alternate;
+			background-color: white;
+			z-index: -1;
+		}
+		@keyframes hueRotate {
+			100% {
+				filter: hue-rotate(360deg);
+			}
+		}
+
+		div.g-mix {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			margin: -300px auto;
+			filter: contrast(15);
+			background: #000;
+			padding: 350px;
+			z-index: -1;
+		}
+		.ball {
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			background-color: #ff3c41;
+			filter: blur(8px);
+		}
+		.box {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(0);
+			background-color: #ff3c41;
+			border-radius: 50%;
+			width: 100px;
+			height: 100px;
+			animation: turn 5s linear infinite;
+			transform-origin: -100% center;
+			filter: blur(8px);
+		}
+
+		@keyframes turn {
+			100% {
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+		div.dot {
+			position: relative;
+			color: #fff;
+			font-size: 28px;
+			line-height: 28px;
+		}
+		.dot::after {
+			content: "省略点动画";
+			position: absolute;
+			top: 0%;
+			bottom: 0;
+			animation: dot 3s infinite steps(3, start);
+			line-height: 28px;
+		}
+
+		@keyframes dot {
+			33.33% {
+				content: "省略点动画.";
+			}
+			66.67% {
+				content: "省略点动画..";
+			}
+			100% {
+				content: "省略点动画...";
+			}
+		}
 		</style>
 	</head>
 	<body>
@@ -1399,7 +1479,6 @@ div {
 <div class="g-linear-gradient-4"></div>
 
 
-
 --
 
 
@@ -1616,6 +1695,8 @@ Loading
 
 --
 
+
+
 <iframe height="405" style="width: 100%;" scrolling="no" title="CSS3 filter (cancle filter by hover)" src="https://codepen.io/Chokcoco/embed/wrwbvG/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/wrwbvG/'>CSS3 filter (cancle filter by hover)</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
@@ -1625,7 +1706,27 @@ Loading
 
 --
 
-hover 增亮图片
+
+```CSS
+{
+    filter: blur(5px);
+    filter: brightness(0.4);
+    filter: contrast(200%);
+	filter: drop-shadow(16px 16px 20px blue);
+	...
+
+    /* Apply multiple filters */
+    filter: contrast(175%) brightness(3%);
+}
+```
+
++ 滤镜可以叠加
++ 多个滤镜叠加，顺序不同，效果不同
+
+
+--
+
+增亮图片
 
 ```CSS
 :hover {
@@ -1633,7 +1734,7 @@ hover 增亮图片
 }
 ```
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="CSS3 filter hover IMG" src="https://codepen.io/Chokcoco/embed/RLwbyr/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="265" style="width: 100%;" scrolling="no" title="CSS3 filter hover IMG" src="https://codepen.io/Chokcoco/embed/RLwbyr/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/RLwbyr/'>CSS3 filter hover IMG</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -1656,39 +1757,98 @@ hover 增亮图片
 
 --
 
-渐变背景
-
-![](https://cloud.githubusercontent.com/assets/8554143/24186346/d984600a-0f12-11e7-8220-dc9a6c04b7ef.gif)
-
-HOW?
-
-![](https://cloud.githubusercontent.com/assets/8554143/24198723/f19443e8-0f41-11e7-804c-ccb3cc3813dd.gif)
-
-
-
---
-
 
 hue-rotate() 实现渐变背景
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="hue-rotate实现渐变背景" src="https://codepen.io/Chokcoco/embed/MRegJW/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-	See the Pen <a href='https://codepen.io/Chokcoco/pen/MRegJW/'>hue-rotate实现渐变背景</a> by Chokcoco
-	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
-  </iframe>
+```CSS
+div {
+	background: linear-gradient(30deg, #ffcc00, deeppink, #9c27b0,);
+	animation: hueRotate 20s infinite alternate;
+}
+
+@keyframes hueRotate {
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
+```
+
+<div class="g-gradient-bg"></div>
+
+--
+
+CSS filter 最神奇之处，滤镜融合效果
+
+<div class="g-mix">
+	<div class="ball"></div>
+	<div class="box"></div>
+</div>
+
+--
+
+
+```HTML
+<div class="g-mix">
+	<div class="g-ball ball1"></div>
+	<div class="g-ball ball2"></div>
+</div>
+```
+```CSS
+.g-mix {
+	filter: contrast(15);
+}
+.g-ball {
+	filter: blur(8px);
+}
+```
++ filter: blur()： 给图像设置高斯模糊效果。
++ filter: contrast()： 调整图像的对比度。
+
+当他们“合体”的时候，产生了奇妙的融合现象，通过对比度滤镜把高斯模糊的模糊边缘给干掉，利用高斯模糊实现融合效果
 
 
 --
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="huerotate实现文字渐变" src="https://codepen.io/Chokcoco/embed/NmRMbd/?height=265&theme-id=1&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-	See the Pen <a href='https://codepen.io/Chokcoco/pen/NmRMbd/'>huerotate实现文字渐变</a> by Chokcoco
+<iframe height="265" style="width: 100%;" scrolling="no" title="loading animation" src="https://codepen.io/Chokcoco/embed/BaaQEab?height=265&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href='https://codepen.io/Chokcoco/pen/BaaQEab'>loading animation</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
   </iframe>
 
+--
+
+
+<iframe height="320" style="width: 100%;" scrolling="no" title="Snow Scratch" src="https://codepen.io/Chokcoco/embed/yLyXqrL?height=320&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href='https://codepen.io/Chokcoco/pen/yLyXqrL'>Snow Scratch</a> by Chokcoco
+	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+  </iframe>
+
+
+
+--
+
+
+<iframe height="450" style="width: 100%;" scrolling="no" title="CSS Candle" src="https://codepen.io/Chokcoco/embed/jJJbmz?height=450&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href='https://codepen.io/Chokcoco/pen/jJJbmz'>CSS Candle</a> by Chokcoco
+	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+  </iframe>
+
+--
+
+<iframe height="450" style="width: 100%;" scrolling="no" title="HuaWei Battery Charging Animation" src="https://codepen.io/Chokcoco/embed/vYExwvm?height=450&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href='https://codepen.io/Chokcoco/pen/vYExwvm'>HuaWei Battery Charging Animation</a> by Chokcoco
+	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+  </iframe>
 
 ---
 
 ## 伪元素
 
+
+--
+
++ 区分伪元素和伪类，理解使用 : 与 :: 的异同
++ 有一些特定的标签是不支持伪元素 before 和 after 的（`<img>` 、`<input>`、`<iframe>`）
++ `::before`,`::after`伪元素能实现的，真实子元素都可以做到。只不过有时候单纯是为了样式和布局就改变html结构，这样的做法不干净，不值得提倡，所以才有了伪元素的市场
 
 --
 
@@ -1714,14 +1874,20 @@ hue-rotate() 实现渐变背景
 --
 
 
-省略点动画
-
-<iframe height="265" style="width: 100%;" scrolling="no" title="CSS实现打点loading效果" src="https://codepen.io/Chokcoco/embed/yrJpQG/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-	See the Pen <a href='https://codepen.io/Chokcoco/pen/yrJpQG/'>CSS实现打点loading效果</a> by Chokcoco
-	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-
+<p class="dot"></p>
+```
+@keyframes dot {
+	33.33% {
+		content: "省略点动画.";
+	}
+	66.67% {
+		content: "省略点动画..";
+	}
+	100% {
+		content: "省略点动画...";
+	}
+}
+```
 
 ---
 
