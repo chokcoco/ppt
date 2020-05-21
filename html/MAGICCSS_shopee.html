@@ -25,7 +25,7 @@
 		::-webkit-scrollbar{width:4px;height: 4px; cursor: pointer;background-color: transparent;}
 		::-webkit-scrollbar-thumb{background:#999;}
 		body {
-			background: linear-gradient(60deg, #16003d, #193847);
+			background: linear-gradient(45deg, #2d74ad, #24333a);
 			font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 		}
 		.reveal pre {
@@ -163,6 +163,30 @@
 				80px 80px 0 0 yellow, 
 				-80px 80px 0 10px green;
 		}
+    div.bgShadow9 {
+      margin: 50px auto!important;
+			width: 120px;
+			height: 80px;
+			background: #fff;
+      box-shadow:  
+        0 0 0 2px red,
+        0 0 0 4px orange,
+        0 0 0 6px yellow,
+        0 0 0 8px green,
+        0 0 0 10px cyan;
+    }
+    div.bgShadow10 {
+      margin: 20px auto!important;
+			width: 120px;
+			height: 80px;
+			background: #fff;
+      box-shadow:  
+      0 0 0 4px orange,
+      0 0 0 6px transparent,
+      0 0 0 8px green,
+      0 0 0 10px transparent,
+      0 0 0 12px cyan;
+    }
 		.bgShadowCloud{
 			width:100px;
 			height:100px;
@@ -189,8 +213,8 @@
 			}
 		}
 		.bgCSSbattle {
-			width: 800px;
-			height:	600px;
+			width: 400px;
+			height:	300px;
 			background: url(../images/cssmagic/bg-cssbattle.png);
 			margin: 0 auto!important;
 			background-size: contain;
@@ -240,17 +264,79 @@
 		}
 		.bgLongShadow::before {
 			transform-origin: 0 50%;
-			transform: translate(100%, 0) skewY(45deg) scaleX(.6);
+			transform: translate(100%, 0) skewY(45deg) scaleX(.3);
 			background: linear-gradient(90deg, rgba(255, 255, 255, .3), transparent);
 			animation: shadowMoveY 5s infinite linear alternate;
 		}
 
 		.bgLongShadow::after {
 			transform-origin: 0 0;
-			transform: translate(0%, 100%) skewX(45deg) scaleY(.6);
+			transform: translate(0%, 100%) skewX(45deg) scaleY(.3);
 			background: linear-gradient(180deg, rgba(255, 255, 255, .3), transparent);
 			animation: shadowMoveX 5s infinite linear alternate;
 		}
+    div.bgSolidShadow,
+    div.bgSolidShadow2 {
+      position: relative;
+      width: 600px;
+      height: 100px;
+      margin: 50px auto;
+      background: hsl(48, 100%, 50%);
+      border-radius: 20px;
+      box-shadow: 0 0 5px 2px hsl(48, 100%, 45%);
+      cursor: pointer;
+    }
+    div.bgSolidShadow2 {
+      background: hsl(199, 98%, 48%);
+      box-shadow: 0 0 5px 2px hsl(199, 98%, 40%);
+    }
+
+    .bgSolidShadow2::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        right: 5%;
+        bottom: 15%;
+        border-radius: 10px;
+        transform: translate(0, -20%) rotate(-5deg);
+        transform-origin: center center;
+        box-shadow: 0 0 12px 12px hsl(0, 0%, 0%);
+        z-index: -1;
+    }
+
+    .bgSolidShadow2::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        right: 5%;
+        bottom: 15%;
+        border-radius: 10px;
+        transform: translate(0, -20%) rotate(5deg);
+        transform-origin: center center;
+        box-shadow: 0 0 12px 12px hsl(0, 0%, 0%);
+        z-index: -1;
+    }
+    .bgSolidShadow::before {
+        content: "";
+        position: absolute;
+        top: 40%;
+        left: 5%;
+        right: 5%;
+        bottom: 0;
+        border-radius: 10px;
+        transform: translate(0, -15%) rotate(-2deg);
+        transform-origin: center center;
+        box-shadow: 0 0 10px 12px hsl(0, 0%, 0%);
+        z-index: -1;
+    }
+    
+    div.bgSolidShadow:hover,
+    div.bgSolidShadow2:hover {
+      background: transparent;
+    }
+
 		.bgColorShadow {
 			position: relative;
 			width: 200px;
@@ -719,6 +805,7 @@
 				bottom: 5px;
 			}
 		}
+
 		div.g-conic {
 			width: 200px;
 			height: 200px;
@@ -1532,11 +1619,30 @@ div {
 
 --
 
+使用阴影模拟多重边框
+
+```CSS
+{
+  background: #fff;
+  box-shadow:  
+    0 0 0 2px red,
+    0 0 0 4px orange,
+    0 0 0 6px yellow,
+    0 0 0 8px green,
+    0 0 0 10px cyan;
+}
+```
+<div class="bgShadow9"></div>
+
+--
+
 
 <div class="bgShadowCloud"></div>
 
 
 --
+
+[CSSBattle](https://cssbattle.dev/play/15)
 
 <div class="bgCSSbattle"></div>
 
@@ -1568,9 +1674,15 @@ div {
 
 <div class="bgLongShadow"></div>
 
+--
 
+立体投影
+
+<div class="bgSolidShadow"></div>
+<div class="bgSolidShadow2"></div>
 
 --
+
 
 彩色阴影
 
@@ -1646,6 +1758,8 @@ div {
 使用阴影的扩散半径实现内切圆角
 
 <div class="chamfer"></div>
+
+
 
 ---
 
@@ -2354,43 +2468,38 @@ CSS filter 最神奇之处，滤镜融合效果
 <div class="g-last-title"> THANK YOU </div>
 
 
+      </script>
+    </section>
+  </div>
+</div>
+<script src="../lib/js/head.min.js"></script>
+<script src="../js/reveal.js"></script>
+<script>
+  window.addEventListener('click', (e) => {
+    if (e.target.className === 'g-btn-graidient') {
+      e.preventDefault;
+      //reset animation
+      e.target.classList.remove('animate');
+      
+      e.target.classList.add('animate');
+      setTimeout(function(){
+        e.target.classList.remove('animate');
+      },700);
+    }
+  });
 
+  // More info http://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    history: true,
 
-
-
-					</script>
-				</section>
-			</div>
-		</div>
-
-		<script src="../lib/js/head.min.js"></script>
-		<script src="../js/reveal.js"></script>
-		<script>
-			window.addEventListener('click', (e) => {
-				if (e.target.className === 'g-btn-graidient') {
-					e.preventDefault;
-					//reset animation
-					e.target.classList.remove('animate');
-					
-					e.target.classList.add('animate');
-					setTimeout(function(){
-						e.target.classList.remove('animate');
-					},700);
-				}
-			});
-
-			// More info http://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
-
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: '../plugin/markdown/marked.js' },
-					{ src: '../plugin/markdown/markdown.js' },
-					{ src: '../plugin/notes/notes.js', async: true },
-					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+    // More info https://github.com/hakimel/reveal.js#dependencies
+    dependencies: [
+      { src: '../plugin/markdown/marked.js' },
+      { src: '../plugin/markdown/markdown.js' },
+      { src: '../plugin/notes/notes.js', async: true },
+      { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+</script>
+</body>
 </html>
