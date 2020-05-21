@@ -88,8 +88,9 @@
 			height: 300px;
 			background: #ffcc00;
 			font-size: 24px;
-			line-height: 38px;
+			line-height: 42px;
 			clip-path: polygon(0 0, 400px 0, 500px 300px, 100px 300px);
+			text-align: left;
 		}
 
 		.polygon2 p {
@@ -1296,7 +1297,7 @@
 
 --
 
-如何实现下面这个平行四边形
+如何实现平行四边形布局效果?
 
 transform？ 、叠加三角形？
 
@@ -1310,9 +1311,11 @@ transform？ 、叠加三角形？
 <div class="polygon2">
     <span class="left"></span>
     <span class="right"></span>
-    <p> shape-outside 定义了一个可以是非矩形的形状，相邻的内联内容应围绕该形状进行排版。<br/>
-    shape-outside 属性指定使用下面列表的值来定义浮动元素的浮动区域。这个浮动区域决定了行内内容（浮动元素）所包裹的形状。<br/>
-    clip-path CSS 属性可以创建一个只有元素的部分区域可以显示的剪切区域。clip-path CSS 属性可以创建一个只有元素的部分区域可以显示的剪切区域。clip-path CSS 属性可以创建一个只有元素的部分区域可以显示的剪切区域。
+    <p> 1. shape-outside 定义了一个可以是非矩形的形状，相邻的内联内容应围绕该形状进行排版。<br/>
+    2. shape-outside 属性指定使用下面列表的值来定义浮动元素的浮动区域。这个浮动区域决定了行内内容（浮动元素）所包裹的形状。<br/>
+	3. clip-path CSS 属性可以创建一个只有元素的部分区域可以显示的剪切区域。<br/>
+	4. <br/>
+	5. <br/>
     </p>
 </div>
 
@@ -1432,7 +1435,7 @@ box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
 
 在 flex 格式化上下文中，设置了 margin: auto 的元素，在通过 justify-content 和 align-self 进行对齐之前，任何正处于空闲的空间都会分配到该方向的自动 margin 中去
 
-<iframe height="303" style="width: 100%;" scrolling="no" title="最便捷的垂直居中方式" src="https://codepen.io/Chokcoco/embed/preview/GarPev?height=303&theme-id=1ark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="303" style="width: 100%;" scrolling="no" title="最便捷的垂直居中方式" src="https://codepen.io/Chokcoco/embed/GarPev?height=303&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 	See the Pen <a href='https://codepen.io/Chokcoco/pen/GarPev'>最便捷的垂直居中方式</a> by Chokcoco
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
