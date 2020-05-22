@@ -163,30 +163,53 @@
 				80px 80px 0 0 yellow, 
 				-80px 80px 0 10px green;
 		}
-    div.bgShadow9 {
-      margin: 50px auto!important;
-			width: 120px;
-			height: 80px;
-			background: #fff;
-      box-shadow:  
-        0 0 0 2px red,
-        0 0 0 4px orange,
-        0 0 0 6px yellow,
-        0 0 0 8px green,
-        0 0 0 10px cyan;
-    }
-    div.bgShadow10 {
-      margin: 20px auto!important;
-			width: 120px;
-			height: 80px;
-			background: #fff;
-      box-shadow:  
-      0 0 0 4px orange,
-      0 0 0 6px transparent,
-      0 0 0 8px green,
-      0 0 0 10px transparent,
-      0 0 0 12px cyan;
-    }
+		div.bgShadow9 {
+		margin: 50px auto!important;
+				width: 120px;
+				height: 80px;
+				background: #fff;
+		box-shadow:  
+			0 0 0 2px red,
+			0 0 0 4px orange,
+			0 0 0 6px yellow,
+			0 0 0 8px green,
+			0 0 0 10px cyan;
+		}
+		div.bgShadow10 {
+		margin: 20px auto!important;
+				width: 120px;
+				height: 80px;
+				background: #fff;
+		box-shadow:  
+		0 0 0 4px orange,
+		0 0 0 6px transparent,
+		0 0 0 8px green,
+		0 0 0 10px transparent,
+		0 0 0 12px cyan;
+		}
+		.bgShadowInset {
+			width:200px;
+			height:200px;
+			margin:50px auto!important;
+			background:#fff;
+			border-radius:50%;
+			animation: insetShadowMove 7s infinite linear;
+		}
+		@keyframes insetShadowMove {
+			0% {
+				box-shadow: inset 0 0 0 0 ;
+				background:#fff;
+			}
+			40% {
+				box-shadow: inset -20px 0 0 0 deeppink;
+				background:#fff;
+			}
+			80% ,
+			100%{
+				box-shadow: inset -20px 0 0 0 deeppink;
+				background: transparent;
+			}
+		}
 		.bgShadowCloud{
 			width:100px;
 			height:100px;
@@ -1255,30 +1278,31 @@
 				transform: translate(-50%, -50%) rotate(360deg);
 			}
 		}
-		div.dot {
+		p.dot {
 			position: relative;
 			color: #fff;
-			font-size: 28px;
-			line-height: 28px;
+			font-size: 36px;
+			line-height: 36px;
+			height: 64px;
 		}
 		.dot::after {
-			content: "省略点动画";
+			content: "加载中";
 			position: absolute;
 			top: 0%;
-			bottom: 0;
+			left: 40%;
 			animation: dot 3s infinite steps(3, start);
 			line-height: 28px;
 		}
 
 		@keyframes dot {
 			33.33% {
-				content: "省略点动画.";
+				content: "加载中.";
 			}
 			66.67% {
-				content: "省略点动画..";
+				content: "加载中..";
 			}
 			100% {
-				content: "省略点动画...";
+				content: "加载中...";
 			}
 		}
 		div.g-border-1,
@@ -1642,6 +1666,21 @@ div {
 
 --
 
+内阴影
+
+
+<div class="bgShadowInset"></div>
+
+--
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="Crimson Crescent Loading" src="https://codepen.io/Chokcoco/embed/eYpxjdp?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href='https://codepen.io/Chokcoco/pen/eYpxjdp'>Crimson Crescent Loading</a> by Chokcoco
+	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+
+--
+
 [CSSBattle](https://cssbattle.dev/play/15)
 
 <div class="bgCSSbattle"></div>
@@ -1949,9 +1988,10 @@ transform、filter、mix-blend-mode 等等
 
 又或者是这种积分表盘
 
-<div class="g-conic-3">
-    <div class="point"></div>
-</div>
+<iframe height="320" style="width: 100%;" scrolling="no" title="Gauge (No SVG)" src="https://codepen.io/alphardex/embed/BaydVvQ?height=320&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href='https://codepen.io/alphardex/pen/BaydVvQ'>Gauge (No SVG)</a> by alphardex
+	(<a href='https://codepen.io/alphardex'>@alphardex</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 
 --
@@ -2258,14 +2298,14 @@ CSS filter 最神奇之处，滤镜融合效果
 
 ---
 
-## 伪元素
+## 伪元素与伪类
 
 
 --
 
 + 区分伪元素和伪类，理解使用 : 与 :: 的异同
 + 有一些特定的标签是不支持伪元素 before 和 after 的（`<img>` 、`<input>`、`<iframe>`）
-+ `::before`,`::after`伪元素能实现的，真实子元素都可以做到。只不过有时候单纯是为了样式和布局就改变html结构，这样的做法不干净，不值得提倡，所以才有了伪元素的市场
++ `::before`,`::after` 伪元素能实现的，真实子元素都可以做到。伪元素在原先的元素基础上插入额外的元素且这个元素不充当HTML的标签的行为，能很好的保持HTML结构的整洁
 
 --
 
@@ -2293,16 +2333,36 @@ CSS filter 最神奇之处，滤镜融合效果
 
 <p class="dot"></p>
 ```
+p::after  {
+	content: "加载中";
+	animation: dot 3s infinite steps(3, start);
+}
 @keyframes dot {
 	33.33% {
-		content: "省略点动画.";
+		content: "加载中.";
 	}
 	66.67% {
-		content: "省略点动画..";
+		content: "加载中..";
 	}
 	100% {
-		content: "省略点动画...";
+		content: "加载中...";
 	}
+}
+```
+
+
+--
+
+埋点与统计
+
+```CSS
+.button-1:active::after {
+    content: url(./report.gif?action=click&id=button1);
+    display: none;
+}
+.button-2:active::after {
+    content: url(./report.gif?action=click&id=button2);
+    display: none;
 }
 ```
 
