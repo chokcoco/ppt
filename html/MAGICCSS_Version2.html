@@ -1461,10 +1461,11 @@
 + 渐变
 + 混合模式
 + 滤镜
++ SVG 滤镜
 + 伪元素
 + 波浪效果
-+ 滚动指示器
 + 滚动视差
++ 3D
 
 ---
 
@@ -2086,6 +2087,24 @@ transform、filter、mix-blend-mode 等等
 	<div class="circle"></div>
 	<div class="circle circle--multiply"></div>
 </div>
+
+--
+
+利用角向渐变实现边框效果
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="Rotating border" src="https://codepen.io/Chokcoco/embed/YzGdEMZ?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Chokcoco/pen/YzGdEMZ">
+  Rotating border</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+--
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="Rotating border 3" src="https://codepen.io/Chokcoco/embed/dypaobm?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Chokcoco/pen/dypaobm">
+  Rotating border 3</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
 ---
 
@@ -2795,32 +2814,6 @@ p::after  {
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
----
-
-
-## 滚动指示器
-
-
---
-
-![](https://user-images.githubusercontent.com/8554143/50879370-a5cc2900-1415-11e9-89ba-40713de326f5.gif)
-
-
---
-
-<iframe height="450" style="width: 100%;" scrolling="no" title="滚动指示器示例" src="https://codepen.io/Chokcoco/embed/rbMvrQ/?height=265&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-	See the Pen <a href='https://codepen.io/Chokcoco/pen/rbMvrQ/'>滚动指示器示例</a> by Chokcoco
-	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-
---
-
-<iframe height="265" style="width: 100%;" scrolling="no" title="使用线性渐变实现滚动进度条" src="https://codepen.io/Chokcoco/embed/KbBXQM/?height=265&theme-id=1&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-	See the Pen <a href='https://codepen.io/Chokcoco/pen/KbBXQM/'>使用线性渐变实现滚动进度条</a> by Chokcoco
-	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
 
 ---
 
@@ -2856,6 +2849,83 @@ p::after  {
 	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+
+---
+
+## 3D 
+
+--
+
+CSS 3D 也可以实现一些非常有意思的效果
+
+--
+
+通过立方体来入门 CSS 3D
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="Webpack logo" src="https://codepen.io/Chokcoco/embed/gOWyeXX?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Chokcoco/pen/gOWyeXX">
+  Webpack logo</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+--
+
+核心原理：
+
++ 掌握 `ransform-style`
++ 理解 `perspective`
+
+![](https://images2015.cnblogs.com/blog/608782/201609/608782-20160906203231144-1239156468.png)
+
+--
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="3DView2" src="https://codepen.io/Chokcoco/embed/KgwqRd?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Chokcoco/pen/KgwqRd">
+  3DView2</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+--
+
+3D 进度条
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Pure CSS 3D Progress Bar" src="https://codepen.io/Chokcoco/embed/gORYybM?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Chokcoco/pen/gORYybM">
+  Pure CSS 3D Progress Bar</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+--
+
+3D 视图下的 404
+
+<iframe class="iframe-all-screen" height="300" style="width: 100%;" scrolling="no" title="Only CSS: 404 Rolling Box" src="https://codepen.io/Chokcoco/embed/MdGYbX?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Chokcoco/pen/MdGYbX">
+  Only CSS: 404 Rolling Box</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+--
+
+任意多边形的无限延伸运动
+
+<iframe class="iframe-all-screen" height="300" style="width: 100%;" scrolling="no" title="Rollers! (infinitely unwrapping prisms; 3D, pure CSS)" src="https://codepen.io/Chokcoco/embed/OJErdXa?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Chokcoco/pen/OJErdXa">
+  Rollers! (infinitely unwrapping prisms; 3D, pure CSS)</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+--
+
+打开脑洞，这就是 CSS 的魅力
+
+<iframe class="iframe-all-screen" height="300" style="width: 100%;" scrolling="no" title="Pure CSS Galaxy  Shuttle" src="https://codepen.io/Chokcoco/embed/abWeNEV?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Chokcoco/pen/abWeNEV">
+  Pure CSS Galaxy  Shuttle</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
 ---
 
