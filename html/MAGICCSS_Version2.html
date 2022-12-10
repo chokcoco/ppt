@@ -1456,6 +1456,15 @@
 
 ---
 
+## 自我介绍
+
++ 7年互联网经验，曾任职于**欢聚时代**，**腾讯**
++ 目前任职于某一线电商，负责前端技术管理
++ 在多个技术论坛，发表过**超三百篇**原创技术文章，全网浏览量超过 **1000W**
++ 活跃于开源社区，个人 Github 开源项目超 **3W** 个 Stars，同时个人 Github followers 超 **7200** 人，中国区前 **50** 名
+
+---
+
 + 布局
 + 阴影
 + 渐变
@@ -1471,6 +1480,121 @@
 
 ## 布局
 
+
+--
+
+水平垂直居中？最快的水平垂直居中方法是什么？
+
+
+--
+
+
+大部分人都不太关注的 Grid 布局：
+
+```HTML
+<div class="g-container">
+    <div class="g-box"></div>
+</div>
+```
+```CSS
+.g-container {
+    display: grid;
+	place-content: center;
+}
+```
+
+--
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="Grid Template" src="https://codepen.io/Chokcoco/embed/rNKjLrY?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href="https://codepen.io/Chokcoco/pen/rNKjLrY">
+	Grid Template</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+	on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+--
+
+巧用自动 margin
+```HTML
+<div class="g-container">
+    <div class="g-box"></div>
+</div>
+```
+```CSS
+.g-container {
+    display: flex;
+}
+
+.g-box {
+    margin: auto;
+}
+```
+
+--
+
+在 flex 格式化上下文中，设置了 margin: auto 的元素，在通过 justify-content 和 align-self 进行对齐之前，任何正处于空闲的空间都会分配到该方向的自动 margin 中去
+
+<iframe height="303" style="width: 100%;" scrolling="no" title="最便捷的垂直居中方式" src="https://codepen.io/Chokcoco/embed/GarPev?height=303&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href='https://codepen.io/Chokcoco/pen/GarPev'>最便捷的垂直居中方式</a> by Chokcoco
+	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+
+--
+
+<div class="bgMargin"></div>
+```
+<ul class="g-nav">
+    <li>导航A</li>
+    <li>导航B</li>
+    <li>导航C</li>
+    <li>导航D</li>
+    <li class="g-login">登陆</li>
+    <li>注册</li>
+</ul>
+```
+
+--
+
+```CSS
+.g-nav {
+    display: flex;
+}
+
+.g-login {
+    margin-left: auto;
+}
+```
+
+
+--
+
+<div class="bgMarginFooter"></div>
+
+
+--
+
+```HTML
+<div class="g-container">
+    <div class="g-real-box">
+        ...
+    </div>
+    <div class="g-footer"></div>
+</div>
+```
+```CSS
+.g-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.g-footer {
+    margin-top: auto;
+    flex-shrink: 0;
+    height: 30px;
+    background: deeppink;
+}
+```
 
 --
 
@@ -1579,97 +1703,6 @@ transform？ 、叠加三角形？
 	(<a href='http://codepen.io/netsi1964'>@netsi1964</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
 
-
---
-
-
-水平垂直居中？最快的水平垂直居中方法是什么？
-
-
---
-
-巧用自动 margin
-```HTML
-<div class="g-container">
-    <div class="g-box"></div>
-</div>
-```
-```CSS
-.g-container {
-    display: flex;
-}
-
-.g-box {
-    margin: auto;
-}
-```
-
---
-
-在 flex 格式化上下文中，设置了 margin: auto 的元素，在通过 justify-content 和 align-self 进行对齐之前，任何正处于空闲的空间都会分配到该方向的自动 margin 中去
-
-<iframe height="303" style="width: 100%;" scrolling="no" title="最便捷的垂直居中方式" src="https://codepen.io/Chokcoco/embed/GarPev?height=303&theme-id=1&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-	See the Pen <a href='https://codepen.io/Chokcoco/pen/GarPev'>最便捷的垂直居中方式</a> by Chokcoco
-	(<a href='https://codepen.io/Chokcoco'>@Chokcoco</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-
---
-
-<div class="bgMargin"></div>
-```
-<ul class="g-nav">
-    <li>导航A</li>
-    <li>导航B</li>
-    <li>导航C</li>
-    <li>导航D</li>
-    <li class="g-login">登陆</li>
-    <li>注册</li>
-</ul>
-```
-
---
-
-```CSS
-.g-nav {
-    display: flex;
-}
-
-.g-login {
-    margin-left: auto;
-}
-```
-
-
---
-
-<div class="bgMarginFooter"></div>
-
-
---
-
-```HTML
-<div class="g-container">
-    <div class="g-real-box">
-        ...
-    </div>
-    <div class="g-footer"></div>
-</div>
-```
-```CSS
-.g-container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.g-footer {
-    margin-top: auto;
-    flex-shrink: 0;
-    height: 30px;
-    background: deeppink;
-}
-```
 
 ---
 
@@ -1849,7 +1882,7 @@ div {
 
 --
 
-利用 **drop-shadow** 单标签实现抖音 LOGO
+利用 **shadow / drop-shadow** 单标签实现抖音 LOGO
 
 <div class="tiktok"></div>
 
@@ -2603,6 +2636,10 @@ div {
 + 区分伪元素和伪类，理解使用 : 与 :: 的异同
 + 有一些特定的标签是不支持伪元素 before 和 after 的（`<img>` 、`<input>`、`<iframe>`）
 + `::before`,`::after` 伪元素能实现的，真实子元素都可以做到。伪元素在原先的元素基础上插入额外的元素且这个元素不充当HTML的标签的行为，能很好的保持HTML结构的整洁
+
+--
+
+有了伪元素，其实任意一个元素，都近似于等于 3 个元素
 
 --
 
