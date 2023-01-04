@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>你所不知道的CSS</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/reveal.css">
+	<link rel="stylesheet" href="../css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : '../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		::-webkit-scrollbar-track-piece {
+			background-color: #141414;
+		}
+
+		::-webkit-scrollbar {
+			width: 4px;
+			height: 4px;
+			cursor: pointer;
+			background-color: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #999;
+		}
+
+		@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+		body {
+			background: linear-gradient(45deg, #2d74ad, #24333a);
+			font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+		}
+
+		.reveal pre {
+			border-radius: .5em;
+			border: .3em solid hsl(0, 0%, 33%);
+			box-shadow: 1px 1px .5em black inset;
+			margin: .5em auto;
+			overflow: auto;
+			padding: 1em;
+			background: hsl(0, 0%, 8%);
+			font-family: 'Space Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+		}
+
+		.reveal code {
+			font-family: 'Space Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+			background: #000508;
+			border-radius: 6px;
+			padding: 0px 4px;
+			font-size: 22px;
+			color: #e91e63;
+			font-weight: bold;
+		}
+
+		.reveal pre code {
+			color: white;
+			direction: ltr;
+			font-family: 'Space Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+			text-align: left;
+			text-shadow: 0 -.1em .2em black;
+			white-space: pre;
+			background: transparent;
+		}
+
+		.reveal h1,
+		.reveal h2,
+		.reveal h3,
+		.reveal h4,
+		.reveal h5,
+		.reveal h6,
+		ul,
+		p {
+			font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+			color: #eee8d5;
+			font-weight: normal;
+
+		}
+
+		.reveal ol,
+		.reveal ul,
+		.reveal ul li,
+		.reveal p {
+			font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+			color: #fff;
+			font-size: 90%;
+			color: #ddd;
+		}
+
+		.reveal ol li,
+		.reveal ul li {
+			font-size: 28px;
+		}
+
+		strong {
+			color: #0c8;
+		}
+
+		svg {
+			width: 0;
+			left: 0;
+			position: absolute;
+		}
+
+		.g-css-content {
+			display: block;
+			border-radius: 0.5em;
+			border: 0.3em solid hsl(0, 0%, 33%);
+			box-shadow: 1px 1px 0.5em black inset;
+			overflow: auto;
+			padding: 1em;
+			background: hsl(0, 0%, 8%);
+			font-size: 22px;
+			padding: 0 10px 10px;
+			white-space: break-spaces;
+			text-align: initial;
+		}
+
+		/**/
+		css-doodle {
+			--color: @p(#51eaea, #fffde1, #ff9d76, #FB3569);
+
+			--rule: (:doodle {
+					@grid: 30x1 / 18vmin;
+					--deg: @p(-180deg, 180deg);
+				}
+
+				:container {
+					perspective: 100vmin;
+				}
+
+				:after, :before {
+					content: '';
+					background: var(--color);
+					@place-cell: @r(100%) @r(100%);
+					@size: @r(6px);
+					@shape: hypocycloid @r(20);
+				}
+
+				@place-cell: center;
+				@size: 100%;
+				border-radius: @r(40%, 50%);
+				box-shadow: @m2(0 0 50px var(--color));
+				background: @m100(radial-gradient(var(--color) 50%, transparent 0) @r(-20%, 120%) @r(-20%, 100%) / 1px 1px no-repeat);
+
+				will-change: transform, opacity;
+				animation: scale-up 120s linear infinite;
+				animation-delay: calc(-120s / @I * @i);
+
+				@keyframes scale-up {
+					0%, 95.01%, 100% {
+						transform: translateZ(0) rotate(0);
+						opacity: 0;
+					}
+
+					10% {
+						opacity: 1;
+					}
+
+					95% {
+						transform: translateZ(90vmin) rotateZ(@var(--deg));
+					}
+				})
+		}
+
+		iframe.iframe-all-screen {
+			width: 100vw !important;
+			height: 100vh;
+			top: 50%;
+			position: fixed;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			max-width: unset;
+			max-height: unset;
+			z-index: -1;
+		}
+
+		.g-first-page {
+			position: fixed;
+			inset: -40vw;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			contain: content;
+			overflow: clip;
+		}
+
+		.reveal .g-currentColor {
+			color: #f00;
+		}
+
+		.reveal .g-currentColor.on {
+			color: #f00;
+			border: 1px solid;
+			box-shadow: 2px 2px 10px 2px;
+			text-shadow: 2px 2px 5px;
+		}
+
+		.g-reflect.g-reflect {
+			position: relative;
+			margin: 0 auto;
+			width: 200px;
+			height: 200px;
+			background-image: url('http://images2015.cnblogs.com/blog/608782/201609/608782-20160926101029078-1479229145.jpg');
+
+		}
+
+		.g-reflect::before {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			bottom: -100%;
+			background-image: inherit;
+			background-repeat: no-repeat;
+			transform: rotateX(180deg);
+			mask: linear-gradient(transparent, #000);
+			-webkit-mask: linear-gradient(transparent, #000);
+		}
+
+		.g-demo-cube {
+			margin: auto;
+		}
+
+		.perspective {
+			transform-style: preserve-3d;
+			perspective: 200px;
+			transform: rotateX(10deg);
+		}
+
+		ul {
+			padding: 0;
+			list-style: none;
+		}
+
+		.g-demo-cube {
+			position: relative;
+			width: 100%;
+			height: 200px;
+		}
+
+		.g-demo-cube .cube-inner {
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -25px 0 0 -25px;
+			transform-style: preserve-3d;
+			transform-origin: 25px 25px;
+			transform: rotateX(-33.5deg) rotateY(45deg);
+			-webkit-animation: fastspin 6s ease-in-out infinite 2s;
+			animation: fastspin 6s ease-in-out infinite 2s;
+		}
+
+		.g-demo-cube .cube-inner li {
+			position: absolute;
+			display: block;
+			width: 50px;
+			height: 50px;
+			background: #175d96;
+			border: 1px solid #fff;
+		}
+
+		.g-demo-cube .cube-inner .top {
+			transform: rotateX(90deg) translateZ(25px);
+		}
+
+		.g-demo-cube .cube-inner .bottom {
+			transform: rotateX(-90deg) translateZ(25px);
+		}
+
+		.g-demo-cube .cube-inner .front {
+			transform: translateZ(25px);
+		}
+
+		.g-demo-cube .cube-inner .back {
+			transform: rotateX(-180deg) translateZ(25px);
+		}
+
+		.g-demo-cube .cube-inner .left {
+			transform: rotateY(-90deg) translateZ(25px);
+		}
+
+		.g-demo-cube .cube-inner .right {
+			transform: rotateY(90deg) translateZ(25px);
+		}
+
+		.g-demo-cube .cube {
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -50px 0 0 -50px;
+			transform-style: preserve-3d;
+			transform-origin: 50px 50px;
+			transform: rotateX(-33.5deg) rotateY(45deg);
+			-webkit-animation: slowspin 6s ease-in-out infinite 2s;
+			animation: slowspin 6s ease-in-out infinite 2s;
+		}
+
+		.g-demo-cube .cube li {
+			position: absolute;
+			display: block;
+			width: 100px;
+			height: 100px;
+			background: rgba(141, 214, 249, 0.5);
+			border: 1px solid #fff;
+		}
+
+		.g-demo-cube .cube .top {
+			transform: rotateX(90deg) translateZ(50px);
+		}
+
+		.g-demo-cube .cube .bottom {
+			transform: rotateX(-90deg) translateZ(50px);
+		}
+
+		.g-demo-cube .cube .front {
+			transform: translateZ(50px);
+		}
+
+		.g-demo-cube .cube .back {
+			transform: rotateX(-180deg) translateZ(50px);
+		}
+
+		.g-demo-cube .cube .left {
+			transform: rotateY(-90deg) translateZ(50px);
+		}
+
+		.g-demo-cube .cube .right {
+			transform: rotateY(90deg) translateZ(50px);
+		}
+		@keyframes fastspin {
+			0% {
+				transform: rotateX(-33.5deg) rotateY(45deg);
+			}
+
+			40%,
+			to {
+				transform: rotateX(-33.5deg) rotateY(-315deg);
+			}
+		}
+		@keyframes slowspin {
+			0% {
+				transform: rotateX(-33.5deg) rotateY(45deg);
+			}
+
+			40%,
+			to {
+				transform: rotateX(-33.5deg) rotateY(315deg);
+			}
+		}
+		.g-vh-demo.g-vh-demo {
+			width: 260px;
+			height: 260px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Slides are separated by newline + three dashes + newline, vertical slides identical but two dashes -->
+			<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+				<script type="text/template">
+
+<p class="title-h1"> 你所不知道的CSS  </p>
+<p class="title-h2"> Coco Qiao </p>
+<div class="g-first-page">
+	<css-doodle use="var(--rule)"></css-doodle>
+</div>
+
+
+---
+
+## 自我介绍
+
++ 7年互联网经验，曾任职于**欢聚时代**，**腾讯**
++ 目前任职于某一线电商，负责前端技术管理
++ 在多个技术论坛，发表过**超三百篇**原创技术文章，全网浏览量超过 **1000W**
++ 活跃于开源社区，个人 Github 开源项目超 **3W** 个 Stars，同时个人 Github followers 超 **7200** 人，中国区前 **50** 名
+
+---
+
++ 字体的奥妙
++ 选择器趣事
++ currentColor
++ inherit
++ fixed 失效
++ 3D 坍缩
++ 100vh 失效
++ 置换元素的伪元素
++ 带方向的 overflow:hidden
++ 负值技巧
++ inset 关键字
+
+---
+
+## 字体的奥妙
+
+
+--
+
+这两个字体有什么不一样?
+
+<div style="font-family: serif;font-size: 80px;">N 王</div>
+
+<div style="font-family: sans-serif;font-size: 80px;">N 王</div>
+
+
+--
+
+```HTML
+<div style="font-family: serif;">N 王</div>
+<div style="font-family: sans-serif;">N 王</div>
+```
+
+![](https://img2020.cnblogs.com/blog/608782/202109/608782-20210926103514614-1235625518.png)
+
+
+--
+
+> 为什么我这行文案在开发的时候是没问题的，在他的手机上却换行了？
+> PM：前端，为什么两个系统上的字体不一样？
+
+
+--
+
+不同操作系统下，预装的字体是不一样的！
+
+即便使用相同的 font-family 规则不代表前端展示上的相同！
+
++ Web 页面的 lang, charset 和浏览器设置都会对默认字体产生影响
++ 不同操作系统、不同浏览器的默认中文、英文字体的设置都有区别
+
+--
+
+> 为什么我给这个字体设置从 font-weight: 400 变化到 font-weight: 500 没有变粗？
+
+常见的字重数值大致对应的字重描述词语：
+
++ 100 - Thin
++ 200 - Extra Light (Ultra Light)
++ 300 - Light
++ 400 - Regular (Normal、Book、Roman)
++ 500 - Medium
++ 600 - Semi Bold (Demi Bold)
++ 700 - Bold
++ 800 - Extra Bold (Ultra Bold)
++ 900 - Black (Heavy)
+
+--
+
+实际上，很少存在满足有 9 重粗细的字体
+
+通常而言，字体拥有的字重数量为 4 至 6 个
+
+> 只有 400(normal) 和 700(bold) 对应的字重是每种字体必备的
+
+---
+
+
+## 选择器趣事
+
+
+--
+
+如何让 `background: red` 生效?
+
+```
+<div class="foo"></div>
+```
+```CSS
+// a.css
+body > .foo {
+    background: #000;
+}
+// b.css
+.foo {
+    background: red;
+}
+```
+
+
+
+
+--
+
+通过自己叠加自己的方式，提升选择器的权重
+
+```CSS
+// a.css
+body > .foo {
+    background: #000;
+}
+// b.css
+.foo.foo {
+    background: red;
+}
+```
+
+
+---
+
+## 理解 currentColor 与 color
+
+
+--
+
+
+currentColor = color
+
+
+--
+
+
+```CSS
+.g-currentColor {
+	color: #f00;
+}
+```
+
+<p class="g-currentColor">currentColor Test</p>
+
+--
+
+
+```CSS
+.g-currentColor {
+	color: #f00;
+	border: 1px solid;
+	box-shadow: 2px 2px 10px 2px;
+	text-shadow: 2px 2px 5px;
+}
+```
+
+<p class="g-currentColor on">currentColor Test</p>
+
+
+--
+
+
+在 CSS 变量出现之前的一种封装的思想
+
+---
+
+## inherit
+
+
+--
+
+
+每个 CSS 属性定义的概述都指出了这个属性是
+
+1. 默认继承的 ("Inherited: Yes") 
+2. 还是默认不继承的 ("Inherited: no")
+
+
+```CSS
+{
+    position: inherit;
+    position: initial;
+    position: unset;
+}
+```
+
+
+--
+
+实现一个倒影效果：
+
+<div class="g-reflect"></div>
+
+--
+
+巧妙的利用 inherit，从父元素继承图像资源
+
+```CSS
+.g-reflect {
+	width: 200px;
+	height: 200px;
+	background-image: url('image.jpg');
+}
+.g-reflect::before {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	bottom: -100%;
++   background-image: inherit;
+	transform: rotateX(180deg);
+	mask: linear-gradient(transparent, #000);
+}
+```
+
+---
+
+## fixed 失效
+
+--
+
+```HTML
+<div class="container"> 
+	<div class="fixed"></div>
+</div>
+```
+```CSS
+.container {
+	width:10vw;
+    height: 10vw;
+    background: rgba(255, 100, 100, .8);
+}
+.fixed {
+    position: fixed;
+    top: 1vw;
+    left: 1vw;
+    right: 1vw;
+    bottom: 1vw;
+    background: rgba(100, 100, 255, .8);
+}
+```
+
+--
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="层叠上下文对 fixed 定位的影响（基于不同浏览器内核结果不同）" src="https://codepen.io/Chokcoco/embed/wqXZXd?default-tab=result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href="https://codepen.io/Chokcoco/pen/wqXZXd">
+	层叠上下文对 fixed 定位的影响（基于不同浏览器内核结果不同）</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+	on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+--
+
+当元素祖先的 transform 属性非 none 时，容器由视口改为该祖先
+
+
+--
+
+### 根因 - 堆叠上下文（Stacking Context）
+
+堆叠上下文是 HTML 元素的三维概念，这些 HTML 元素在一条假想的相对于面向（电脑屏幕的）视窗或者网页的用户的 z 轴上延伸，HTML 元素依据其自身属性按照优先级顺序占用层叠上下文的空间。
+
+> 生成了 Stacking Context 的元素会影响该元素的层叠关系与定位关系
+
+
+--
+
+下述 7 种方式目前都会使得 position:fixed 的基准元素改变：
+
+1. `transform` 属性值不为 none 的元素
+2. 设置了 `transform-style: preserve-3d` 的元素
+3. `perspective` 值不为 none 的元素
+4. 在 `will-change` 中指定了任意 CSS 属性
+5. 设置了 `contain: paint`
+6. `filter` 值不为 none 的元素
+7. `backdrop-filter` 值不为 none 的元素
+
+--
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="层叠上下文对 fixed 定位的影响（基于不同浏览器内核结果不同）" src="https://codepen.io/Chokcoco/embed/wqXZXd?default-tab=result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href="https://codepen.io/Chokcoco/pen/wqXZXd">
+	层叠上下文对 fixed 定位的影响（基于不同浏览器内核结果不同）</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+	on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+---
+
+
+## 3D 坍缩
+
+--
+
+<iframe class="iframe-all-screen" height="300" style="width: 100%;" scrolling="no" title="3D ball" src="https://codepen.io/Chokcoco/embed/JwdvmJ?default-tab=result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Chokcoco/pen/JwdvmJ">
+  3D ball</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+--
+
+给这个效果的父容器添加一个 `filter: contrast(1)`
+
+<iframe class="iframe-all-screen" height="300" style="width: 100%;" scrolling="no" title="3D ball" src="https://codepen.io/Chokcoco/embed/vYaGeRg?default-tab=result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href="https://codepen.io/Chokcoco/pen/vYaGeRg">
+	3D ball</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+	on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+--
+
+<iframe class="iframe-all-screen" height="300" style="width: 100%;" scrolling="no" title="Only CSS: COCO Rolling Box" src="https://codepen.io/Chokcoco/embed/mdKJNYd?default-tab=result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href="https://codepen.io/Chokcoco/pen/mdKJNYd">
+	Only CSS: COCO Rolling Box</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+	on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+--
+
+同样的，给立方体的容器添加一个 `mix-blend-mode: color`
+
+<iframe class="iframe-all-screen" height="300" style="width: 100%;" scrolling="no" title="Only CSS: COCO Rolling Box" src="https://codepen.io/Chokcoco/embed/abjNLaz?default-tab=result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href="https://codepen.io/Chokcoco/pen/abjNLaz">
+	Only CSS: COCO Rolling Box</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+	on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+--
+
+当我们使用 CSS 混合模式（滤镜同理）的时候，堆叠上下文会重新对这个使用了混合模式的元素的根节点处创建一个独立的渲染平面，但是很可惜，这个渲染平面是不支持 preserve-3d 的(因为它们渲染到单独的FBO中)，所以我们看到是一个 2D 的平面效果。
+
+--
+
++ 黄色代表 CSS 渲染时候的 GraphicsLayer 层
++ 蓝色网格表示瓦片(tile)，你可以把它们当作是层的单元，Chrome 内核可以将它们作为一个大层的部分上传给 GPU 进行渲染加速
+
+<div class="g-demo-cube perspective">
+	<ul class="cube-inner">
+	  <li class="top"></li>
+	  <li class="bottom"></li>
+	  <li class="front"></li>
+	  <li class="back"></li>
+	  <li class="right"></li>
+	  <li class="left"></li>
+	</ul>
+	<ul class="cube">
+	  <li class="top"></li>
+	  <li class="bottom"></li>
+	  <li class="front"></li>
+	  <li class="back"></li>
+	  <li class="right"></li>
+	  <li class="left"></li>
+	</ul>
+</div>
+
+--
+
++ [Link - bugs.chromium - mix-blend-mode not interacting with all elements behind as expected.](https://bugs.chromium.org/p/chromium/issues/detail?id=575099)
++ [探究 CSS 混合模式\滤镜导致 CSS 3D 失效问题](https://github.com/chokcoco/iCSS/issues/41)
+
+
+---
+
+## 100vh 失效问题
+
+--
+
++ vw：1vw 等于 1/100 的视口宽度 （Viewport Width）
++ vh：1vh 等于1/100的视口高度 （Viewport Height）
+
+--
+
+
+使用 Chrome 手机浏览器扫描下面二维码：
+
+<div class="g-vh-demo">
+	<img src="../images/dontkown/vh_qrcode.png" alt="">
+</div>
+
+
+--
+
+在移动端 chrome 浏览器中， 100vh 高度会出现滚动条
+
+> 根因在于很多浏览器，会把地址栏计算在内 
+
+这会导致一系列预料之外的 BUG，慎用 `100vh`
+
+
+--
+
+当我们仍旧需要占满一屏的时候，更好的选择是：
+
+```HTML
+<div></div>
+```
+```CSS
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+div {
+	height: 100%;
+}
+```
+
+--
+
+开始学习新的更酷的容器查询单位：
+
++ `cqw`：表示容器查询宽度（Container Query Width）占比。1cqw等于容器宽度的1%。假设容器宽度是1000px，则此时1cqw对应的计算值就是10px
++ `cqh`：	表示容器查询高度（Container Query Height）占比。1cqh等于容器高度的1%
+
+> 容器查询：它给予了 CSS，在不改变浏览器视口宽度的前提下，只是根据容器的宽度变化，对布局做成调整的能力。
+
+---
+
+## 如何学习 CSS
+
+
+--
+
++ 多看，多写
++ 《CSS Secrets》、[CodePen](https://codepen.io/)、[CSS-Tricks](https://css-tricks.com/)
++ [CSS Battle](https://cssbattle.dev/)
++ [张鑫旭](https://www.zhangxinxu.com/wordpress/category/css/)、[大漠老师-w3cplus](https://www.w3cplus.com/)、[iCSS](https://github.com/chokcoco/iCSS)、[CSS-inspiration](https://chokcoco.github.io/CSS-Inspiration/#/)
+
+
+---
+
+<div class="g-last-title"> THANK YOU </div>
+
+<svg>
+	<defs>
+			<filter id="blur">
+					<feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+			</filter>
+	</defs>
+</svg>
+      </script>
+			</section>
+		</div>
+	</div>
+	<script src="../lib/js/head.min.js"></script>
+	<script src="../js/reveal.js"></script>
+	<script src="https://unpkg.com/css-doodle@0.15.3/css-doodle.min.js"></script>
+	<script>
+		window.addEventListener('click', (e) => {
+			if (e.target.className === 'g-btn-graidient') {
+				e.preventDefault;
+				//reset animation
+				e.target.classList.remove('animate');
+
+				e.target.classList.add('animate');
+				setTimeout(function () {
+					e.target.classList.remove('animate');
+				}, 700);
+			}
+		});
+
+		// More info http://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			history: true,
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: '../plugin/markdown/marked.js' },
+				{ src: '../plugin/markdown/markdown.js' },
+				{ src: '../plugin/notes/notes.js', async: true },
+				{ src: '../plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
