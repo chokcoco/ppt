@@ -9,6 +9,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../css/reveal.css">
 	<link rel="stylesheet" href="../css/theme/black.css">
 
@@ -42,10 +43,9 @@
 		@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 		body {
-			background: linear-gradient(45deg, #2d74ad, #24333a);
+			background: linear-gradient(-135deg, #379aea, #32166a);
 			font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 		}
-
 		.reveal pre {
 			border-radius: .5em;
 			border: .3em solid hsl(0, 0%, 33%);
@@ -115,7 +115,44 @@
 			left: 0;
 			position: absolute;
 		}
-
+		.g-thankyou {
+			width: max-content;
+			user-select: none;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			pointer-events: none;
+			padding: 0 10px;
+			width: 100%;
+    		text-align: center;
+		}
+		.g-thankyou > div {
+			font: bolder 9rem/9rem "EB Garamond";
+			font-family: 'Righteous', cursive;
+			background-image: url(https://images.unsplash.com/flagged/photo-1579268351234-073f85929562?w=200&q=80);
+			/* background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180815%2Ff26de16c9dfa40c1ba0bfe9ae81be3ee.gif&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1673678016&t=47dde8d78f9d5064f9a9c4764422facf); */
+			-webkit-background-clip: text;
+			color: transparent;
+			overflow: hidden;
+		}
+		.g-thankyou > :last-child {
+			--gradient: 
+				repeating-linear-gradient(
+					transparent,
+					transparent 3px,
+					white 3px,
+					white 4px
+				),
+				linear-gradient(transparent 50%, #000 80%);
+			-webkit-mask-image: var(--gradient);
+			mask-image: var(--gradient);
+			transform: rotatex(180deg) translatey(34px) skewX(30deg) translateX(-32px);
+			opacity: 1;
+			filter: blur(3px) contrast(1.5);
+		}
+		.slides > section:last-child {
+			background-color: #000;
+			box-shadow: 0 0 0 50vw #000;
+		}
 		.g-css-content {
 			display: block;
 			border-radius: 0.5em;
@@ -427,6 +464,72 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 		}
+		
+		.g-overflow-container .person-card {
+			width: 300px;
+			margin: 50px auto;
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #fff;
+			display: flex;
+			background: #fff;
+			box-shadow: 0px 0px 4px 0px #fff;
+		}
+		.g-overflow-container .info {
+			margin-left: 8px;
+			white-space: nowrap;
+		}
+		.g-overflow-container .info .person-card__name {
+			margin: 16px 0 8px;
+			font-size: 18px;
+			text-align: left;
+			color: #333;
+		}
+		.g-overflow-container .info .person-card__desc {
+			font-size: 14px;
+			line-height: 24px;
+			color: #8f8f92;
+			margin: unset;
+		}
+		.g-overflow-container .info .person-card__desc.single-line {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 210px;
+		}
+		.g-overflow-container .info .person-card__desc.inlineblock span {
+			display: inline-block;
+		}
+		.g-overflow-container .info .person-card__desc.text-front {
+			direction: rtl;
+		}
+		.g-overflow-container .info .person-card__desc.multiple-line {
+			width: 200px;
+			white-space: normal;
+			overflow : hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			line-height: 1.25;
+		}
+		.g-overflow-container .info span {
+			background: #673ab7;
+			border-radius: 5px;
+			color: #fff;
+			padding: 2px 6px;
+			margin-right: 6px;
+		}
+		.g-overflow-container .avatar {
+			width: 80px;
+			height: 80px;
+			background-image: url("https://avatars.githubusercontent.com/u/8554143?s=460&u=c322501aeb96b3f90f504512d501830b70894eae&v=4");
+			background-size: cover;
+			background-position: center;
+			display: block;
+			border-radius: 50%;
+			flex-shrink: 0;
+		}
 	</style>
 </head>
 
@@ -451,21 +554,20 @@
 + 7年互联网经验，曾任职于**欢聚时代**，**腾讯**
 + 目前任职于某一线电商，负责前端技术管理
 + 在多个技术论坛，发表过**超三百篇**原创技术文章，全网浏览量超过 **1000W**
-+ 活跃于开源社区，个人 Github 开源项目超 **3W** 个 Stars，同时个人 Github followers 超 **7200** 人，中国区前 **50** 名
++ 活跃于开源社区，个人 Github 开源项目超 **3W** 个 Stars，同时个人 Github followers 超 **7300** 人，中国区前 **50** 名
 
 ---
 
 + 字体的奥妙
 + 选择器趣事
 + currentColor
-+ inherit
++ inherit 与 unset
 + fixed 失效
 + 3D 坍缩
 + 100vh 失效
 + 替换元素的伪元素
 + overflow:hidden
-+ 负值技巧
-+ inset 关键字
++ 超长打点省略
 
 ---
 
@@ -630,13 +732,34 @@ currentColor = color
 
 在 CSS 变量出现之前的一种封装的思想
 
+--
+
+```border: 1px solid``` 等价于 `border: 1px solid currentColor`
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="currentColor &amp; Button" src="https://codepen.io/Chokcoco/embed/YzjpvmP?default-tab=css%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href="https://codepen.io/Chokcoco/pen/YzjpvmP">
+	currentColor &amp; Button</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+	on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+--
+
+```box-shadow: 30px 0``` 等价于 `box-shadow: 30px 0 currentColor`
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="currentColor &amp; Button" src="https://codepen.io/Chokcoco/embed/VwBmBww?default-tab=css%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href="https://codepen.io/Chokcoco/pen/VwBmBww">
+	currentColor &amp; Button</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+	on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
 ---
 
-## inherit
+## inherit 与 unset
 
 
 --
 
+> inherit
 
 每个 CSS 属性定义的概述都指出了这个属性是
 
@@ -681,6 +804,60 @@ currentColor = color
 	mask: linear-gradient(transparent, #000);
 }
 ```
+
+--
+
+> unset
+
+如果设置一个属性为 `unset`
+
+1. 如果这个属性本来有从父级继承的值（这个属性默认可以继承，且父级有定义），则将该属性重新设置为继承的值，
+2. 如果没有继承父级样式，则将该属性重新设置为初始值
+
+
+```CSS
+{
+    position: inherit;
+    position: initial;
+    position: unset;
+}
+```
+
+--
+
+很多 CSS Reset 中会存在这样的代码：
+
+```CSS
+* {
+	box-sizing: border-box;
+}
+```
+
+--
+
+如果对于一些元素，你不希望它设置成 `border-box`:
+
+```HTML
+<div class="you-dont-want-borderbox"></div>
+```
+```CSS
+.you-dont-want-borderbox {
+    box-sizing: unset;
+}
+```
+
+> 相当于设置成了 `box-sizing: content-box`
+
+
+--
+
+有一些特殊场景，`unset` 是更好的选择
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="unset DEMO" src="https://codepen.io/Chokcoco/embed/bGjBjzK?default-tab=css%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+	See the Pen <a href="https://codepen.io/Chokcoco/pen/bGjBjzK">
+	unset DEMO</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
+	on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
 ---
 
@@ -798,7 +975,7 @@ currentColor = color
 
 --
 
-当我们使用 CSS 混合模式（滤镜同理）的时候，堆叠上下文会重新对这个使用了混合模式的元素的根节点处创建一个独立的渲染平面，但是很可惜，这个渲染平面是不支持 preserve-3d 的(因为它们渲染到单独的FBO中)，所以我们看到是一个 2D 的平面效果。
+当我们使用 CSS 混合模式（滤镜同理）的时候，堆叠上下文会重新对这个使用了混合模式的元素的根节点处创建一个独立的渲染平面，但是很可惜，这个渲染平面是不支持 preserve-3d 的，所以我们看到是一个 2D 的平面效果。
 
 --
 
@@ -892,7 +1069,7 @@ div {
 
 --
 
-灵魂发问：所有元素都有 `::before` 和 `::after` 伪元素吗？
+> 灵魂发问：所有元素都有 `::before` 和 `::after` 伪元素吗？
 
 
 --
@@ -1096,7 +1273,7 @@ img.error::after {
 }
 ```
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="contain: paint Demo" src="https://codepen.io/Chokcoco/embed/KKwmgmN?default-tab=css%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="300" style="width: 100%;" scrolling="no" title="contain: paint Demo" src="https://codepen.io/Chokcoco/embed/KKwmgmN?default-tab=css%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/Chokcoco/pen/KKwmgmN">
   contain: paint Demo</a> by Chokcoco (<a href="https://codepen.io/Chokcoco">@Chokcoco</a>)
   on <a href="https://codepen.io">CodePen</a>.
@@ -1104,7 +1281,7 @@ img.error::after {
 
 --
 
-> `contain: paint` 属性产生的目的，即是为加快页面的渲染，在非必要区域，不渲染元素。因此，如果元素不在屏幕上或以其他方式设定为不可见，则其后代不可见不被渲染。
+> `contain: paint` 属性诞生的目的，即是为加快页面的渲染，在非必要区域，不渲染元素。因此，如果元素不在屏幕上或以其他方式设定为不可见，则其后代不可见不被渲染。
 
 也就是说，此元素的子元素不会在此元素的边界之外被展示。
 
@@ -1117,6 +1294,202 @@ img.error::after {
 + `contain: paint` 不绘制元素范围外的内容
 
 > Link - [如何不使用 overflow: hidden 实现 overflow: hidden？](https://github.com/chokcoco/iCSS/issues/90)
+
+---
+
+## 超长打点省略
+
+
+--
+
+正常而言：
+
+<div class="g-overflow-container">
+	<div class="person-card">
+		<a href="/" class="avatar"></a>
+		<div class="info">
+			<p class="person-card__name">Sb Coco</p>
+			<p class="person-card__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, repellat sunt sint quos labore, temporibus rem minima aperiam, earum aliquid ea asperiores modi quam ipsa dolores porro eos distinctio quo?</p>
+		</div>
+	</div>
+</div>
+
+--
+
+> 单行省略
+
+```CSS
+.single-line {
+	width: 200px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+```
+
+<div class="g-overflow-container">
+	<div class="person-card">
+		<a href="/" class="avatar"></a>
+		<div class="info">
+			<p class="person-card__name">Sb Coco</p>
+			<p class="person-card__desc single-line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, repellat sunt sint quos labore, temporibus rem minima aperiam, earum aliquid ea asperiores modi quam ipsa dolores porro eos distinctio quo?</p>
+		</div>
+	</div>
+</div>
+
+--
+
+> 多行省略
+
+```CSS
+.multiple-line {
+    width: 200px;
+    white-space: normal;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+```
+
+<div class="g-overflow-container">
+	<div class="person-card">
+		<a href="/" class="avatar"></a>
+		<div class="info">
+			<p class="person-card__name">Sb Coco</p>
+			<p class="person-card__desc multiple-line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, repellat sunt sint quos labore, temporibus rem minima aperiam, earum aliquid ea asperiores modi quam ipsa dolores porro eos distinctio quo?</p>
+		</div>
+	</div>
+</div>
+
+
+--
+
+> 灵魂发问：如果要将省略的部分放在内容前面？该如何做呢？
+
+<div class="g-overflow-container">
+	<div class="person-card">
+		<a href="/" class="avatar"></a>
+		<div class="info">
+			<p class="person-card__name">Sb Coco</p>
+			<p class="person-card__desc single-line text-front">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, repellat sunt sint quos labore, temporibus rem minima aperiam, earum aliquid ea asperiores modi quam ipsa dolores porro eos distinctio quo?</p>
+		</div>
+	</div>
+</div>
+
+--
+
+```
+{
+	width: 200px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  + direction: rtl;
+
+}
+```
+
+`direction`：设置文本排列的方向。 rtl 表示从右到左 (类似希伯来语或阿拉伯语)， ltr 表示从左到右。
+
+
+--
+
+
+在 CSS 世界中，有 3 个属性与排版顺序相关，互有关联但作用各异。
+
++ `writing-mode`：定义了文本水平或垂直排布以及在块级元素中文本的行进方向。
++ `direction`：设置文本排列的方向。 rtl 表示从右到左 (类似希伯来语或阿拉伯语)， ltr 表示从左到右。
++ `unicode-bidi`：它与 direction 非常类似，两个会经常一起出现。在现代计算机应用中，最常用来处理双向文字的算法是 Unicode 双向算法。而 unicode-bidi 这个属性是用来重写这个算法的。
+
+Link - [CSS 世界中的方位与顺序](https://github.com/chokcoco/iCSS/issues/127)
+
+
+--
+
+
+下述布局，添加单行溢出会发生什么？
+
+```HTML
+<p class="person-card__desc">
+	<span>FE</span>
+	<span>BE</span>
+	<span>UX Designer</span>
+	<span>前端工程师</span>
+</p>
+```
+
+<div class="g-overflow-container">
+	<div class="person-card">
+		<a href="/" class="avatar"></a>
+		<div class="info">
+			<p class="person-card__name">Sb Coco</p>
+			<p class="person-card__desc"><span>FE</span><span>BE</span><span>UX Designer</span><span>前端工程师</span></p>
+		</div>
+	</div>
+</div>
+
+--
+
+> 灵魂发问：如何实现整块的溢出隐藏？
+
+
+```HTML
+<p class="person-card__desc single-line">
+	<span>FE</span>
+	<span>BE</span>
+	<span>UX Designer</span>
+	<span>前端工程师</span>
+</p>
+```
+```CSS
+.single-line {
+	width: 200px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+```
+
+<div class="g-overflow-container">
+	<div class="person-card">
+		<a href="/" class="avatar"></a>
+		<div class="info">
+			<p class="person-card__name">Sb Coco</p>
+			<p class="person-card__desc single-line"><span>FE</span><span>BE</span><span>UX Designer</span><span>前端工程师</span></p>
+		</div>
+	</div>
+</div>
+
+
+--
+
+将 `display: inline` 改为 `display: inline-block` 实现整块省略
+
+```HTML
+<p class="person-card__desc single-line inlineblock">
+	<span>FE</span>
+	<span>BE</span>
+	<span>UX Designer</span>
+	<span>前端工程师</span>
+</p>
+```
+```
+.inlineblock span {
+    display: inline-block;
+}
+```
+
+<div class="g-overflow-container">
+	<div class="person-card">
+		<a href="/" class="avatar"></a>
+		<div class="info">
+			<p class="person-card__name">Sb Coco</p>
+			<p class="person-card__desc single-line inlineblock"><span>FE</span><span>BE</span><span>UX Designer</span><span>前端工程师</span></p>
+		</div>
+	</div>
+</div>
 
 ---
 
@@ -1133,7 +1506,10 @@ img.error::after {
 
 ---
 
-<div class="g-last-title"> THANK YOU </div>
+<div class="g-thankyou">
+	<div>Thank You</div>
+	<div>Thank You</div>
+</div>
 
 <svg>
 	<defs>
